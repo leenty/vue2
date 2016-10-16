@@ -1,18 +1,15 @@
 <template lang="pug">
-  #app
-    router-view
+  h1 基于antd风格的vueUI组件
 </template>
 
 <script>
   export default {
     data () {
       return {
-
       }
     }
   }
 </script>
 
 <style lang="stylus">
-  @import './assets/stylus/main'
 </style>
