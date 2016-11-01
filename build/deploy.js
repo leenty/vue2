@@ -1,7 +1,8 @@
 require('shelljs/global')
+let ora = require('ora')
 
 Date.prototype.format = function(fmt) {
-  var o = {   
+  let o = {   
     "M+" : this.getMonth()+1,
     "d+" : this.getDate(),
     "h+" : this.getHours(),
@@ -12,18 +13,25 @@ Date.prototype.format = function(fmt) {
   }
   if(/(y+)/.test(fmt))   
     fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
-  for(var k in o)   
+  for(let k in o)   
     if(new RegExp("("+ k +")").test(fmt))   
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ?
+    (o[k]) :
+    (("00"+ o[k]).substr((""+ o[k]).length)))
   return fmt
 } 
 
+let spinner = ora('building and deploy at ${deployName}')
+spinner.start()
+
 const deployName = new Date().format("yyyy-MM-dd hh:mm:ss")
 
-echo(`deploy at ${deployName}`)
 rm('-rf', ['.deploy/index.html', '.deploy/static'])
 cp('-R', ['dist/index.html', 'dist/static', '.deploy'])
+cd('.deploy')
 exec('git add .')
 exec(`git cm -m "deploy at ${deployName}"`)
-exec('git pull --rebase origin gh-page')
-exec('git push origin gh-page')
+exec('git pull --rebase origin gh-pages')
+exec('git push origin gh-pages')
+
+spinner.stop()

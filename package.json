@@ -5,6 +5,7 @@
   "author": "leenty <leenty@qq.com>",
   "private": true,
   "scripts": {
+    "deploy": "node build/deploy.js",
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "karma start test/unit/karma.conf.js --single-run",
