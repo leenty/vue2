@@ -26,8 +26,8 @@ spinner.start()
 
 const deployName = new Date().format("yyyy-MM-dd hh:mm:ss")
 
-rm('-rf', ['.deploy/index.html', '.deploy/static'])
-cp('-R', ['dist/index.html', 'dist/static', '.deploy'])
+rm('-rf', ['.deploy/CNAME', '.deploy/index.html', '.deploy/static'])
+cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', '.deploy'])
 cd('.deploy')
 exec('git add .')
 exec(`git cm -m "deploy at ${deployName}"`)
