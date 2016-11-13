@@ -21,10 +21,10 @@ Date.prototype.format = function(fmt) {
   return fmt
 } 
 
-let spinner = ora('building and deploy at ${deployName}')
-spinner.start()
-
 const deployName = new Date().format("yyyy-MM-dd hh:mm:ss")
+
+let spinner = ora(`building and deploy at ${deployName}`)
+spinner.start()
 
 rm('-rf', ['.deploy/CNAME', '.deploy/index.html', '.deploy/static'])
 cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', '.deploy'])

@@ -1,7 +1,7 @@
 <template lang="pug">
 .home
   home-header
-  h1 基于antd风格的vueUI组件
+  h1.l-ta--c Material Desgin
 </template>
 
 <script>
