@@ -1,5 +1,50 @@
 @import './preinstall'
 @import './global'
+@import './svg'
 @import './layout'
 @import './utils'
 @import './button'
+
+/**
+ * css命名使用 BEM+emmet 风格作为命名规范
+ * 
+ * 约定[分类名称][属性|组件名称]与[属性名]使用小写
+ * 约定[描述]与[状态]使用首字母大写
+ * [eg]:
+ *  .[分类名称]-[属性|组件名称][描述]--[属性值|状态]
+ *    => .l-flexV--c
+ *    => .b-base--Active
+ * 
+ *  1.约定 [分类名称] 缩写:
+ *    • .layout => .l- (布局部分)
+ *    • .utils => .u- (工具部分)
+ *    • .button => .b- (按钮部分)
+ *    
+ *  2.约定通用 [属性] 缩写:(以emmet联想风格为缩写)
+ *    • width => w
+ *    • height => h
+ *    • color => c
+ *    • background => bg
+ *    • margin => m
+ *    • padding => p
+ *    • border => bd
+ *    
+ *  3.约定通用 [组件名称]:(这里不使用缩写，
+ *    因为组件名可以自定义，缩写易混淆，会增加记忆成本)
+ *    • flex => flex (这里所指的是弹性盒子)
+ *    
+ *  4.约定通用 [描述] 缩写:(以大写)
+ *    • horizontal => H
+ *    • vertical => V
+ *    • normal => N
+ *    
+ *  5.约定通用 [属性值] 缩写:(以属性前缀 '--' + emmet联想风格为缩写)
+ *    • center => --c
+ *    • middle => --m
+ *    • space-around => --sa
+ *    
+ *  6.约定通用 [状态] 缩写:(以属性前缀 '--' + 状态首字母大写，
+ *    这里不使用缩写，因为状态名可以自定义，缩写易混淆，会增加记忆成本)
+ *    • active => --Active
+ */
+ 

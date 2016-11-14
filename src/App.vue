@@ -1,5 +1,6 @@
 <template lang="pug">
   #app
+    include ./assets/svg/all
     router-view
 </template>
 
@@ -7,7 +8,6 @@
   export default {
     data () {
       return {
-
       }
     }
   }

@@ -1,7 +1,7 @@
 <template lang="pug">
 #app
   home-header
-  h1 文章
+  h1.l-ta--c 文章
 </template>
 
 <script>
