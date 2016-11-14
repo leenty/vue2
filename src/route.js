@@ -19,8 +19,8 @@ const routes = [
 
 /* eslint-disable no-new */
 const router = new VueRouter({
-  mode: 'history',
-  // mode: 'hash',
+  // mode: 'history',
+  mode: 'hash',
   linkActiveClass: 'u-link--active',
   // base: '/app/',
   routes
