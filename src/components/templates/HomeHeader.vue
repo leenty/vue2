@@ -1,5 +1,7 @@
 <template lang="pug">
   header.header.u-clearfix
+    .header__listSwitch.l-pt10.l-pl10
+      button.b-menu
     .header__menu.u-boxShadow.l-flexH--sa
       router-link(to="/", exact).u-link.header__link.l-flexV--c
         svg.svg__home
@@ -26,6 +28,7 @@ export default {
     background-color c-master
     height 160px
     margin-bottom 60px
+    position relative
   .header__menu
     max-width max-width
     background-color c-ff
@@ -34,4 +37,9 @@ export default {
   .header__link
     height 80px
     width 80px
+  .header__listSwitch
+    position absolute
+    width 100%
+    left 0
+    top 0
 </style>
