@@ -25,7 +25,14 @@
     },
     computed: mapGetters([
       'articleList'
-    ])
+    ]),
+    ready () {
+      console.log('test')
+      console.log(document.querySelector('.app__content'))
+      document.querySelector('.app__content').addEventListener('scroll', function (e) {
+        console.log(e)
+      })
+    }
   }
 </script>
 
