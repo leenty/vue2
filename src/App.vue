@@ -3,7 +3,8 @@
     include ./assets/svg/all
     app-article-list
     .app__content(
-      :class="{'app__content--Active': articleList}"
+      :class="{'app__content--Active': articleList}",
+      @scroll="pushScrollData"
     ).l-page--Full
       home-header
       .app__bodyer
@@ -13,7 +14,8 @@
 <script>
   import HomeHeader from './components/templates/HomeHeader.vue'
   import AppArticleList from './components/templates/AppArticleList.vue'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
+  // import fullScreen from './utils/fullScreen'
   export default {
     data () {
       return {
@@ -26,13 +28,21 @@
     computed: mapGetters([
       'articleList'
     ]),
-    ready () {
-      console.log('test')
-      console.log(document.querySelector('.app__content'))
-      document.querySelector('.app__content').addEventListener('scroll', function (e) {
-        console.log(e)
-      })
-    }
+    methods: mapActions([
+      'pushScrollData'
+    ])
+    // created () {
+      // console.log('test')
+      // fullScreen()
+    // }
+    // ready () {
+    //   console.log('test')
+    //   console.log(document.querySelector('.app__content'))
+    //   document.querySelector('.app__content')
+    //     .addEventListener('scroll', e => {
+    //       console.log(e)
+    //     })
+    // }
   }
 </script>
 

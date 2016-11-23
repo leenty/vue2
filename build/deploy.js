@@ -23,15 +23,29 @@ Date.prototype.format = function(fmt) {
 
 const deployName = new Date().format("yyyy-MM-dd hh:mm:ss")
 
-let spinner = ora(`building and deploy at ${deployName}`)
-spinner.start()
+// const repertoryUrl = 'git@git.coding.net:leenty/vue2.leenty.com.git'
+// cd('.deploy')
+// exec(`git remote origin set-url ${repertoryUrl}`)
+// const checkoutRepertory = function () {
+//   exec(`git clone -b git@github.com:leenty/vue2.git gh-pages`)
+//   // git clone -b <branch name> [remote repository address]
+// }
 
-rm('-rf', ['.deploy/CNAME', '.deploy/index.html', '.deploy/static'])
-cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', '.deploy'])
-cd('.deploy')
-exec('git add .')
-exec(`git cm -m "deploy at ${deployName}"`)
-exec('git pull --rebase origin gh-pages')
-exec('git push origin gh-pages')
+const deploy = function (dir, branch) {
+  let spinner = ora(`building and deploy at ${deployName}`)
+  spinner.start()
 
-spinner.stop()
+  rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`])
+  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', dir])
+  cd(dir)
+  exec('git add .')
+  exec(`git cm -m "deploy at ${deployName}"`)
+  exec(`git pull --rebase origin ${branch}`)
+  exec(`git push origin ${branch}`)
+  cd('..')
+
+  spinner.stop()
+  console.log('/n')
+}
+deploy('.deploy', 'gh-pages')
+deploy('.deploy_coding', 'master')

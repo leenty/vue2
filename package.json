@@ -1,7 +1,7 @@
 {
   "name": "vue2.0-demo",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "vue2.0 and use material style",
   "author": "leenty <leenty@qq.com>",
   "private": true,
   "scripts": {

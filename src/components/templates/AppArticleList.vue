@@ -57,7 +57,7 @@ export default {
     color #fff
   .articleList__li
     transform translateX(-(s-articleList))
-    transition transform .3s cubic-bezier(0.8, 0.02, 0.45, 0.91) .2s
+    transition transform .3s cb-duang .2s
   .articleList__link
     display block
     width 100%

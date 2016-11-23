@@ -1,8 +1,16 @@
 import * as types from '../types'
 
+import getScrollData from '../../utils/scroll'
+
 const state = {
   articleList: false,
-  test: 123
+  test: 123,
+  scroll: {
+    scrollTop: -1,
+    scrollHeight: -1,
+    windowHeight: -1,
+    scrollBottom: -1
+  }
 }
 
 const getters = {
@@ -16,12 +24,19 @@ const getters = {
 const mutations = {
   [types.ARTICLE_LIST] (state) {
     state.articleList = !state.articleList
+  },
+  [types.SCROLLDATA] (state, scrollObj) {
+    // console.log(scrollObj)
+    state.scroll = scrollObj
   }
 }
 
 const actions = {
   articleListSwitch ({ commit }) {
     commit(types.ARTICLE_LIST)
+  },
+  pushScrollData ({ commit }) {
+    commit(types.SCROLLDATA, getScrollData(), { silent: true })
   }
 }
 
