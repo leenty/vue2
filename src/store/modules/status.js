@@ -6,10 +6,10 @@ const state = {
   articleList: false,
   test: 123,
   scroll: {
-    scrollTop: -1,
-    scrollHeight: -1,
-    windowHeight: -1,
-    scrollBottom: -1
+    scrollTop: 0,
+    scrollHeight: 0,
+    windowHeight: 0,
+    scrollBottom: 0
   }
 }
 

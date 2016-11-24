@@ -7,7 +7,7 @@
       @scroll="pushScrollData"
     ).l-page--Full
       home-header
-      .app__bodyer
+      .app__bodyer.l-mH--auto
         router-view
 </template>
 
@@ -59,5 +59,9 @@
   .app__content--Active
     transform scale(.9) translateX(s-articleList)
   .app__bodyer
+    max-width max-width
     background-color c-bgc
+  @media screen and (max-width: max-width)
+    .app__bodyer
+      padding 0 10px
 </style>

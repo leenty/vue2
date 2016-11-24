@@ -2,7 +2,7 @@
   header(
     :class="{'header--scroll': isScrollDown}"
   ).header.u-clearfix
-    .header__content
+    .header__content(:style="trfFixedStyle")
       .header__listSwitch.l-pt10.l-pl10
         button(
           @click="articleListSwitch",
@@ -38,7 +38,12 @@ export default {
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
       test: ({status}) => status.test,
-      isScrollDown: ({status}) => status.scroll.scrollTop > 0
+      isScrollDown: ({status}) => status.scroll.scrollTop > 0,
+      trfFixedStyle: ({status}) => {
+        return {
+          'top': status.articleList ? `${status.scroll.scrollTop - 1}px` : '0px'
+        }
+      }
     })
   },
   // computed: mapState({
@@ -62,12 +67,16 @@ export default {
     margin-bottom 60px
     transition all .5s cb-duang
     position relative
+    z-index 20
   .header__content
     top 0
     left 0
     position fixed
     width 100%
     background-color c-master
+    transition top 1ms .5s
+  .app__content--Active .header__content
+    transition auto
   .header__menu
     max-width max-width
     background-color c-ff
