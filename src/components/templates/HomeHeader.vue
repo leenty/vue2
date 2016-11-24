@@ -7,7 +7,7 @@
         button(
           @click="articleListSwitch",
           :class="{'b-menu--Active': articleList}"
-        ).b-menu
+        ).header__switch.b-menu
       .header__menu.u-boxShadow.l-flexH--sa
         router-link(to="/", exact).u-link.header__link.l-flexV--c
           svg.svg__home
@@ -83,6 +83,8 @@ export default {
     margin 90px auto 0
     height 120px
     transition all .5s cb-duang
+    position relative
+    z-index 1
   .header__link
     width 80px
     height @width
@@ -94,6 +96,8 @@ export default {
     left 0
     top 0
     box-sizing border-box
+  .header__switch
+    z-index 10
   .header--scroll
     height 50px
     margin-bottom 20px

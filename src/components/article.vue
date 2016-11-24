@@ -1,7 +1,6 @@
 <template lang="pug">
 .article
   h1.l-ta--c 文章test
-  //- .md-content(v-html="md")
   .md-content
     test
 </template>
