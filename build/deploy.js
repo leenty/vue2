@@ -35,8 +35,10 @@ const deploy = function (dir, branch) {
   let spinner = ora(`building and deploy at ${deployName}`)
   spinner.start()
 
-  rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`])
-  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', dir])
+  rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`, `${dir}/article`, `${dir}/demo`])
+  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', 'dist/article', 'dist/demo', dir])
+  // rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`])
+  // cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', dir])
   cd(dir)
   exec('git add .')
   exec(`git cm -m "deploy at ${deployName}"`)
