@@ -11,8 +11,8 @@
           :to="{path: item.url}",
           active-class="articleList__link--Active",
           exact
-        ).articleList__link.u-borderBox.u-link
-          svg.svg__home
+        ).articleList__link.u-borderBox.u-link__inherit
+          svg.svg__home.u-va--tb
             use(xlink:href="#svg__articleIcon")
           span  {{item.name}} 
 </template>

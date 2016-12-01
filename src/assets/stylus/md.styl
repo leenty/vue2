@@ -2,7 +2,7 @@
   img
     display block
     max-width 100%
-    margin 20px auto
+    margin 20px 0
   a
     color c-master
   h1,h2,h3,h4,h5,h6
@@ -10,7 +10,8 @@
     border-bottom 1px solid #dcdcdc
   p
     line-height 1.4em
-    text-indent 1em
+    &:not(:first-child)
+      text-indent 1em
   pre
     color #ccdce1
     background-color #212e35

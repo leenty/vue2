@@ -2,10 +2,13 @@ var path = require('path')
 var config = require('../config')
 var utils = require('./utils')
 var projectRoot = path.resolve(__dirname, '../')
+// http://babeljs.io/docs/usage/polyfill/#top
+require('babel-polyfill')
 
 module.exports = {
   entry: {
-    app: './src/main.js'
+    app: ['babel-polyfill', './src/main.js']
+    // app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,

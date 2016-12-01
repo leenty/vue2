@@ -9,14 +9,20 @@
           :class="{'b-menu--Active': articleList}"
         ).header__switch.b-menu
       .header__menu.u-boxShadow.l-flexH--sa
-        router-link(to="/", exact).u-link.header__link.l-flexV--c
+        router-link(to="/", exact).u-link__inherit.header__link.l-flexV--c
           svg.svg__home
             use(xlink:href="#svg__home")
           span home 
-        router-link(to="/article").u-link.header__link.l-flexV--c
+        router-link(to="/article").u-link__inherit.header__link.l-flexV--c
           svg.svg__code
             use(xlink:href="#svg__code")
           span article
+        router-link(
+          to="/demo"
+        ).u-link__inherit.header__link.l-flexV--c
+          svg
+            use(xlink:href="#svg__demo")
+          span demo
 </template>
 
 <script>

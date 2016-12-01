@@ -1,6 +1,5 @@
 <template lang="pug">
   .app.u-clearfix
-    include ./assets/svg/all
     app-article-list
     .app__content(
       :class="{'app__content--Active': articleList}",
@@ -9,6 +8,7 @@
       home-header
       .app__bodyer.l-mH--auto
         router-view
+    include ./assets/svg/all
 </template>
 
 <script>
