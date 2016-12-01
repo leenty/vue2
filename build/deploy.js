@@ -31,14 +31,18 @@ const deployName = new Date().format("yyyy-MM-dd hh:mm:ss")
 //   // git clone -b <branch name> [remote repository address]
 // }
 
-const deploy = function (dir, branch) {
-  let spinner = ora(`building and deploy at ${deployName}`)
+const deploy = function (branch, repository) {
+  let dir = '.deploy'
+  let spinner = ora(`building and deploy at ${repository} \n `)
   spinner.start()
 
-  rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`, `${dir}/article`, `${dir}/demo`])
-  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', 'dist/article', 'dist/demo', dir])
+  // rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`, `${dir}/article`, `${dir}/demo`])
   // rm('-rf', [`${dir}/CNAME`, `${dir}/index.html`, `${dir}/static`])
   // cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', dir])
+  rm('-rf', dir)
+  exec(`git clone -b ${branch} ${repository} ${dir}`)
+  rm('-rf', `${dir}/*`)
+  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', 'dist/article', 'dist/demo', dir])
   cd(dir)
   exec('git add .')
   exec(`git cm -m "deploy at ${deployName}"`)
@@ -47,7 +51,7 @@ const deploy = function (dir, branch) {
   cd('..')
 
   spinner.stop()
-  console.log('/n')
+  console.log('\n')
 }
-deploy('.deploy', 'gh-pages')
-deploy('.deploy_coding', 'master')
+deploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
+deploy('gh-pages', 'git@github.com:leenty/vue2.git')
