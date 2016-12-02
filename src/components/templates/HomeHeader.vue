@@ -2,7 +2,9 @@
   header(
     :class="{'header--scroll': isScrollDown}"
   ).header.u-clearfix
-    .header__content(:style="trfFixedStyle")
+    .header__content(
+      :style="trfFixedStyle"
+    )
       .header__listSwitch.l-pt10.l-pl10
         button(
           @click="articleListSwitch",

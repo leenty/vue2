@@ -6,7 +6,8 @@ import router from './router'
 import store from './store'
 
 import App from './App.vue'
-// promise.polyfill()
+import AlloyFingerVue from './services/alloy_finger'
+Vue.use(AlloyFingerVue)
 
 /* eslint-disable no-new */
 new Vue({

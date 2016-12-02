@@ -3,6 +3,7 @@
     app-article-list
     .app__content(
       :class="{'app__content--Active': articleList}",
+      v-finger:swipe="swipeRight",
       @scroll="pushScrollData"
     ).l-page--Full
       home-header
@@ -28,9 +29,16 @@
     computed: mapGetters([
       'articleList'
     ]),
-    methods: mapActions([
-      'pushScrollData'
-    ])
+    methods: {
+      ...mapActions([
+        'pushScrollData',
+        'articleListSwitch'
+      ]),
+      swipeRight: function (e) {
+        e.direction === 'Right' && !this.articleList && this.articleListSwitch()
+        e.direction === 'Left' && this.articleList && this.articleListSwitch()
+      }
+    }
     // created () {
       // console.log('test')
       // fullScreen()
