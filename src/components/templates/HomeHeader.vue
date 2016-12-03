@@ -5,7 +5,7 @@
     .header__content(
       :style="trfFixedStyle"
     )
-      .header__listSwitch.l-pt10.l-pl10
+      .header__listSwitch
         button(
           @click="articleListSwitch",
           :class="{'b-menu--Active': articleList}"
@@ -100,10 +100,11 @@ export default {
     // transition-property width 
   .header__listSwitch
     position absolute
-    width 100%
-    left 0
-    top 0
-    box-sizing border-box
+    left 10px
+    top 10px
+    height 25px
+    transition all .5s cb-duang
+    // box-sizing border-box
   .header__switch
     z-index 10
   .header--scroll
@@ -121,4 +122,11 @@ export default {
       height @width
     .u-link--Active
       color #fff
+    .header__listSwitch
+      top 90vh
+      left 5vw
+      background-color c-master
+      padding 10px
+      border-radius 50%
+      box-shadow 0px 2px 5px 0px rgba(0,0,0,0.3)
 </style>
