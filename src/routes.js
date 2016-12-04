@@ -21,7 +21,7 @@ const routes = [
     children: [
       {
         name: 'DemoVuexState',
-        path: '/vuex_state',
+        path: 'vuex_state',
         component: DemoVuexState
       }
     ]

@@ -1,7 +1,8 @@
 import * as types from '../types'
 
 const state = {
-  demoFollow: false
+  demoFollow: false,
+  demomFollowPending: false
 }
 
 const getters = {
@@ -11,12 +12,19 @@ const getters = {
 const mutations = {
   [types.DEMO__VUEX_FOLLOW] (state, status = NaN) {
     state.demoFollow = isNaN(status) ? !state.demoFollow : status
+  },
+  [types.DEMO__VUEX_FOLLOW_PENDING] (state, status = NaN) {
+    state.demomFollowPending = isNaN(status) ? !state.demomFollowPending : status
   }
 }
 
 const actions = {
-  demoFollowSwitch ({commit}, status) {
-    commit(types.DEMO__VUEX_FOLLOW, status)
+  demoFollowAjax ({commit}, status) {
+    commit(types.DEMO__VUEX_FOLLOW_PENDING)
+    setTimeout(() => {
+      commit(types.DEMO__VUEX_FOLLOW_PENDING)
+      commit(types.DEMO__VUEX_FOLLOW, status)
+    }, 2000)
   }
 }
 

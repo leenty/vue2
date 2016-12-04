@@ -4,3 +4,4 @@ export const SCROLLDATA = 'SCROLLDATA'
 
 // demo
 export const DEMO__VUEX_FOLLOW = 'DEMO__VUEX_FOLLOW'
+export const DEMO__VUEX_FOLLOW_PENDING = 'DEMO__VUEX_FOLLOW_PENDING'
