@@ -1,13 +1,16 @@
 <template lang="pug">
 .demo
-  h1.l-ta--c 一下部分皆为(呆萌)
+  h1.l-ta--c 以下部分皆为(呆萌)
+  p
+    router-link(:to="{name: 'DemoVuexState'}").u-link vuex State Demo
   .demo__content
-    p
-      router-link(:to="{path: 'article', params: { userId: 123 }}").u-link article(带params) 
-    p
-      router-link(:to="{name: 'Article', path: '/article', params: { userId: 123 }, query: { plan: 'private' }}").u-link article(带params和query) 
-    p
-      router-link(:to="{ path: 'article'}", append).u-link article(有append属性)相对地址
+    router-view
+    //- p
+    //-   router-link(:to="{path: 'article', params: { userId: 123 }}").u-link article(带params) 
+    //- p
+    //-   router-link(:to="{name: 'Article', path: '/article', params: { userId: 123 }, query: { plan: 'private' }}").u-link article(带params和query) 
+    //- p
+    //-   router-link(:to="{ path: 'article'}", append).u-link article(有append属性)相对地址
     //- button(@click="test") test
     //- section.slide__video
       video(controls, poster, autoplay, width="100%")

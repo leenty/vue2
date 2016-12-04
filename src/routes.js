@@ -1,6 +1,7 @@
 import Home from './components/Home.vue'
 import Article from './components/Article.vue'
 import Demo from './components/Demo.vue'
+import DemoVuexState from './components/DemoVuexState.vue'
 
 const routes = [
   {
@@ -16,7 +17,14 @@ const routes = [
   {
     name: 'Demo',
     path: '/demo',
-    component: Demo
+    component: Demo,
+    children: [
+      {
+        name: 'DemoVuexState',
+        path: '/vuex_state',
+        component: DemoVuexState
+      }
+    ]
   }
 ]
 

@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 // import * as getters from './getters'
 
 import status from './modules/status'
+import demo from './modules/demo'
 // import createLogger from '../../../src/plugins/logger'
 
 Vue.use(Vuex)
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   // actions,
   // getters,
   modules: {
-    status
+    status,
+    demo
   },
   strict: debug
   // plugins: debug ? [createLogger()] : []

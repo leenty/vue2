@@ -6,6 +6,7 @@ button
   color currentColor
   padding 0
   cursor pointer
+  vertical-align -30%
 
 .b-menu
   width 25px
@@ -35,3 +36,30 @@ button
     box-shadow 0 0 0 0 #fff
     transform rotateZ(135deg) translateY(0)
     
+.b-svgBtn
+  padding 5px
+  background-color c-ff
+  border-radius 50%
+  color c-master
+  box-sizing content-box
+  border 1px solid c-master
+  height 24px
+  transition all .5s cb-duang
+  // position relative
+  // &:after
+  //   content ' '
+  //   display block
+  //   width 5px
+  //   height @width
+  //   background-color c-master
+  //   border-radius 50%
+  //   position absolute
+  //   left 50%
+  //   top 50%
+  //   transform-origin center center
+  //   transform translate(-50%, -50%)
+  svg
+    border-radius 50%
+.b-svgBtn--Active
+  background-color c-master
+  color #fff

@@ -1,3 +1,6 @@
 export const ARTICLE_LIST = 'ARTICLE_LIST'
 export const ARTICLE_LIST_SWITCH = 'ARTICLE_LIST_SWITCH'
 export const SCROLLDATA = 'SCROLLDATA'
+
+// demo
+export const DEMO__VUEX_FOLLOW = 'DEMO__VUEX_FOLLOW'

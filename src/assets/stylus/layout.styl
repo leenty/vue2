@@ -1,20 +1,29 @@
-.l-mH--auto
-  margin 0 auto
-
 .l-ta--c
   text-align center
   
 // flex
-.l-flexH--sa
+flexH()
   display flex
   flex-flow row nowrap
+flexV()
+  display flex
+  flex-flow column nowrap
+.l-flexH
+  flexH()
+.l-flexV
+  flexV()
+.l-flexH--sa
+  flexH()
   align-items center
   justify-content space-around
 .l-flexV--c
-  display flex
-  flex-flow column nowrap
+  flexV()
   align-items center
   justify-content center
+.l-flex--auto
+  flex 0 0 auto
+.l-flex--full
+  flex 1 1 100%
 
 // page
 .l-page--Full
@@ -25,8 +34,28 @@
   height 100%
   
 // padding
+.l-p10
+  padding 10px
+.l-pH10
+  padding-left 10px
+  padding-right 10px
 .l-pt10
   padding-top 10px
+.l-pr10
+  padding-right 10px
 .l-pl10
   padding-left 10px
-  
+
+// margin
+.l-m--None
+  margin 0
+.l-mH--auto
+  margin 0 auto
+.l-mH10
+  margin-left 10px
+  margin-right 10px
+.l-mr10
+  margin-right 10px
+.l-mb5
+  margin-bottom 5px
+    
