@@ -2,7 +2,7 @@ import * as types from '../types'
 
 const state = {
   demoFollow: false,
-  demomFollowPending: false
+  demoFollowPending: false
 }
 
 const getters = {
@@ -14,7 +14,7 @@ const mutations = {
     state.demoFollow = isNaN(status) ? !state.demoFollow : status
   },
   [types.DEMO__VUEX_FOLLOW_PENDING] (state, status = NaN) {
-    state.demomFollowPending = isNaN(status) ? !state.demomFollowPending : status
+    state.demoFollowPending = isNaN(status) ? !state.demoFollowPending : status
   }
 }
 
