@@ -26,10 +26,13 @@
             svg
               use(xlink:href="#svg__heart--line")
           span(@click="demoFollowAjax")  {{demoFollowStatus}}
-    p 当前vuex内关注的状态
-    p mapState(['demoFollow'])方法得到的原值：{{mapStateFollow}}
-    p mapGetters(['demoFollowStatus'])方法得到的转化值：{{demoFollowStatus}}
-    p mapActions(['demoFollowAjax'])模拟ajax改变mapState(['mapStateFollowPending'])：{{mapStateFollowPending}}
+    p.l-mb5 vuex里State值
+    .l-mb5 {{ state }}
+    p.l-mb5 当前vuex内关注的状态
+    .l-mb5    
+      p mapState(['demoFollow'])方法得到的原值：{{mapStateFollow}}
+      p mapGetters(['demoFollowStatus'])方法得到的转化值：{{demoFollowStatus}}
+      p mapActions(['demoFollowAjax'])模拟ajax改变mapState(['mapStateFollowPending'])：{{mapStateFollowPending}}
 </template>
 
 <script>
@@ -41,6 +44,7 @@ export default {
   },
   computed: {
     ...mapState({
+      state: ({demo}) => demo,
       mapStateFollow: ({demo}) => demo.demoFollow,
       mapStateFollowPending: ({demo}) => demo.demoFollowPending
     }),
