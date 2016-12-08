@@ -1,28 +1,28 @@
-import Home from './components/Home.vue'
-import Article from './components/Article.vue'
-import Demo from './components/Demo.vue'
-import DemoVuexState from './components/DemoVuexState.vue'
+// import Home from './components/Home.vue'
+// import Article from './components/Article.vue'
+// import Demo from './components/Demo.vue'
+// import DemoVuexState from './components/DemoVuexState.vue'
 
 const routes = [
   {
     name: 'Home',
     path: '/',
-    component: Home
+    component: require('./components/Home.vue')
   },
   {
     name: 'Article',
     path: '/article',
-    component: Article
+    component: require('./components/Article.vue')
   },
   {
     name: 'Demo',
     path: '/demo',
-    component: Demo,
+    component: require('./components/Demo.vue'),
     children: [
       {
         name: 'DemoVuexState',
         path: 'vuex_state',
-        component: DemoVuexState
+        component: require('./components/DemoVuexState.vue')
       }
     ]
   }
