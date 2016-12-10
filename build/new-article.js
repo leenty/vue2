@@ -14,71 +14,67 @@ Date.prototype.format = function(fmt) {
     "S"  : this.getMilliseconds()
   }
   if(/(y+)/.test(fmt))   
-    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length))
   for(let k in o)   
     if(new RegExp("("+ k +")").test(fmt))   
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ?
-    (o[k]) :
-    (("00"+ o[k]).substr((""+ o[k]).length)))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1)
+    ? (o[k])
+    : (("00"+ o[k]).substr((""+ o[k]).length)))
   return fmt
 } 
 
 var argv = require('minimist')(process.argv.slice(2))
 
-const setInfo = function (name) {
-  const date = new Date().format("yyyy/MM/dd")
-  return `<!--{\n"title": "${name}",\n"date": "${date}",\n"path": "${name}",\n"tag": ""\n}-->\n`
-}
-
 const getArticleList = function () {
   let prm = new Promise((resolve, reject) => {
     fs.readdir(path.join(__dirname, relativePath), function(err, files){
-      if (err) {
-        reject(err)
-      }
-      console.log(files)
-      let mdFiles = files.filter(v => v.slice(-3) === '.md')
-      console.log(mdFiles)
-      resolve(files)
+      err && reject(err)
+      resolve(files.filter(v => v.slice(-3) === '.md'))
     })
   })
   return prm
 }
 
 const getInfo = function (name) {
+  let prmArr = []
+  name.forEach(v => {
+    prmArr.push(new Promise((resolve, reject) => {
+      fs.readFile(path.join(__dirname, `${relativePath}${v}`), (err, data) => {
+        err && reject(err)
+        let infoStr = JSON.parse(/{[^{]*}/.exec(/<!--{[^{]*}-->/.exec(data.toString())[0])[0])
+        infoStr.fileName = v.slice(0, -3)
+        resolve(infoStr)
+      })
+    }))
+  })
+  return Promise.all(prmArr)
+}
+
+const createRoute = function (infoArr) {
   let prm = new Promise((resolve, reject) => {
-    fs.readFile(path.join(__dirname, `${relativePath}${name}`), (err, data) => {
-      if (err) {
-        reject(err)
-      }
-      resolve(data.toString())
+    let routesStr = 'const articlesRouter = ['
+    infoArr.forEach((v, k) => {
+      let articleName = v.fileName.replace(' ', '_')
+      routesStr += `${k ? ',' : ''}{name: '${articleName}',path: '/${v.date}/${articleName}',component: require('./md/articles/${v.fileName}.md')}`
+    })
+    routesStr += ']\nexport default articlesRouter\n'
+    fs.writeFile(path.join(__dirname, `../src/articlesRoutes.js`), routesStr, err => {
+      err && reject(err)
+      resolve('路由生成完毕！')
     })
   })
   return prm
 }
 
-const readInfo = function (infoStr) {
-  let prm = new Promise((resolve, reject) => {
-    let info = /{[^{]*}/.exec(/<!--{[^{]*}-->/.exec(infoStr)[0])[0]
-    resolve(JSON.parse(info))
-  })
-  return prm
-}
-
-const createRoute = function (infoObj) {
-  console.log(infoObj)
-  // let prm = new Promise((resolve, reject) => {
-
-  // })
-  // return prm
+const setInfo = function (name) {
+  const date = new Date().format("yyyy/MM/dd")
+  return `<!--{\n"title": "${name}",\n"date": "${date}",\n"tag": ""\n}-->\n`
 }
 
 const createArticle = function (name) {
   const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
   fs.writeFile(articlePath, setInfo(name), err => {
-    if (err) {
-      return console.log(err)
-    }
+    err && console.log(err)
     console.log(`create article @ path: ${articlePath}`)
   })
 }
@@ -86,9 +82,9 @@ const createArticle = function (name) {
 ;(function (arg) {
   createArticle(arg.n ? arg.n : arg.new)
   getArticleList()
-    .then(files => getInfo(files[0]), err => console.log(err))
-    .then(info => readInfo(info), err => console.log(err))
-    .then(infoObj => createRoute(infoObj))
+    .then(getInfo, console.log)
+    .then(createRoute, console.log)
+    .then(console.log, console.log)
 })(argv)
 
 // var temp = require('../src/articles.json')
