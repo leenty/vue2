@@ -26,7 +26,7 @@ Date.prototype.format = function(fmt) {
 var argv = require('minimist')(process.argv.slice(2))
 
 const setInfo = function (name) {
-  const date = new Date().format("yyyy-MM-dd hh:mm:ss")
+  const date = new Date().format("yyyy/MM/dd")
   return `<!--{\n"title": "${name}",\n"date": "${date}",\n"path": "${name}",\n"tag": ""\n}-->\n`
 }
 
@@ -36,6 +36,9 @@ const getArticleList = function () {
       if (err) {
         reject(err)
       }
+      console.log(files)
+      let mdFiles = files.filter(v => v.slice(-3) === '.md')
+      console.log(mdFiles)
       resolve(files)
     })
   })
