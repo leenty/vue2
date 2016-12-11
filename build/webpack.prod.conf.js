@@ -82,7 +82,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new PrerenderSpaPlugin(
       path.join(__dirname, '../dist'),
-      ['/', '/article', '/demo', '/demo/vuex_state' ]
+      ['/', '/article', '/article/vue2_1', '/article/vue2_2', '/article/vue2_3', '/article/vue2_4', '/article/vue2_5', '/demo', '/demo/vuex_state' ]
       // {
       //   // captureAfterDocumentEvent: 'DOMContentLoaded',
       //   // captureAfterElementExists: '.app',
