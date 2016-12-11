@@ -1,2 +1,2 @@
-const articlesRouter = [{name: 'qwe',path: '/2016/12/11/qwe',component: require('./md/articles/qwe.md')},{name: 'test',path: '/2016/12/11/test',component: require('./md/articles/test.md')}]
+const articlesRouter = [{name: 'vue2-1',path: '/2016/10/21/vue2-1',component: require('./md/articles/vue2-1.md')},{name: 'vue2-2',path: '/2016/11/20/vue2-2',component: require('./md/articles/vue2-2.md')},{name: 'vue2-3',path: '/2016/11/27/vue2-3',component: require('./md/articles/vue2-3.md')},{name: 'vue2-4',path: '/2016/12/04/vue2-4',component: require('./md/articles/vue2-4.md')},{name: 'vue2-5',path: '/2016/12/11/vue2-5',component: require('./md/articles/vue2-5.md')}]
 export default articlesRouter

@@ -8,7 +8,7 @@
       ).articleList__li
         //- 在router-link里不能触发click事件
         router-link(
-          :to="{path: item.url}",
+          :to="{name: item.name}",
           active-class="articleList__link--Active",
           exact
         ).articleList__link.u-borderBox.u-link__inherit
@@ -24,12 +24,24 @@ export default {
     return {
       list: [
         {
-          url: '/',
-          name: 'home'
+          name: 'vue2_1',
+          title: 'home'
         },
         {
-          url: '/article',
-          name: 'article'
+          name: 'vue2_2',
+          title: 'article'
+        },
+        {
+          name: 'vue2_3',
+          title: 'article'
+        },
+        {
+          name: 'vue2_4',
+          title: 'article'
+        },
+        {
+          name: 'vue2_5',
+          title: 'article'
         }
       ]
     }

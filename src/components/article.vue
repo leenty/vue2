@@ -2,20 +2,20 @@
 .article
   h1.l-ta--c 文章test
   .md-content
-    test
+    router-view
 </template>
 
 <script>
   // import md from 'marked'
-  import test from '../md/articles/test.md'
+  // import test from '../md/articles/test.md'
   export default {
     data () {
       return {
       }
-    },
-    components: {
-      test
     }
+    // components: {
+    //   test
+    // }
   }
 </script>
 

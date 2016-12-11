@@ -12,7 +12,34 @@ const routes = [
   {
     name: 'Article',
     path: '/article',
-    component: require('./components/Article.vue')
+    component: require('./components/Article.vue'),
+    children: [
+      {
+        name: 'vue2_1',
+        path: 'vue2_1',
+        component: require('./md/articles/vue2-1.md')
+      },
+      {
+        name: 'vue2_2',
+        path: 'vue2_2',
+        component: require('./md/articles/vue2-2.md')
+      },
+      {
+        name: 'vue2_3',
+        path: 'vue2_3',
+        component: require('./md/articles/vue2-3.md')
+      },
+      {
+        name: 'vue2_4',
+        path: 'vue2_4',
+        component: require('./md/articles/vue2-4.md')
+      },
+      {
+        name: 'vue2_5',
+        path: 'vue2_5',
+        component: require('./md/articles/vue2-5.md')
+      }
+    ]
   },
   {
     name: 'Demo',

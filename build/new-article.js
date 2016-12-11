@@ -55,7 +55,11 @@ const createRoute = function (infoArr) {
     let routesStr = 'const articlesRouter = ['
     infoArr.forEach((v, k) => {
       let articleName = v.fileName.replace(' ', '_')
-      routesStr += `${k ? ',' : ''}{name: '${articleName}',path: '/${v.date}/${articleName}',component: require('./md/articles/${v.fileName}.md')}`
+      routesStr += `${k ? ',' : ''}{`
+        +   `name: '${articleName}',`
+        +   `path: '/${v.date}/${articleName}',`
+        +   `component: require('./md/articles/${v.fileName}.md')`
+        + `}`
     })
     routesStr += ']\nexport default articlesRouter\n'
     fs.writeFile(path.join(__dirname, `../src/articlesRoutes.js`), routesStr, err => {
@@ -68,7 +72,12 @@ const createRoute = function (infoArr) {
 
 const setInfo = function (name) {
   const date = new Date().format("yyyy/MM/dd")
-  return `<!--{\n"title": "${name}",\n"date": "${date}",\n"tag": ""\n}-->\n`
+  return '<!--{'
+    +       `\n"title": "${name}",`
+    +       `\n"date": "${date}",`
+    +       `\n"tag": "",`
+    +       `\n"series": ""`
+    +    '\n}-->\n'
 }
 
 const createArticle = function (name) {
