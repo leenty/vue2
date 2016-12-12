@@ -4,7 +4,6 @@ import getScrollData from '../../utils/scroll'
 
 const state = {
   articleList: false,
-  test: 123,
   scroll: {
     scrollTop: 0,
     scrollHeight: 0,
@@ -26,7 +25,6 @@ const mutations = {
     state.articleList = !state.articleList
   },
   [types.SCROLLDATA] (state, scrollObj) {
-    // console.log(scrollObj)
     state.scroll = scrollObj
   }
 }

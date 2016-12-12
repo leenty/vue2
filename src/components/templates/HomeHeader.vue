@@ -45,7 +45,6 @@ export default {
     ]),
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
-      test: ({status}) => status.test,
       isScrollDown: ({status}) => status.scroll.scrollTop > 0,
       trfFixedStyle: ({status}) => {
         return {
@@ -54,14 +53,6 @@ export default {
       }
     })
   },
-  // computed: mapState({
-  //   test: ({status}) => status.test
-  // })
-  // vuex: {
-  //   getters: {
-  //     test: ({ status }) => status.test
-  //   }
-  // }
   methods: {
     ...mapActions(['articleListSwitch'])
   }

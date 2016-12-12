@@ -6,15 +6,14 @@
         @click="articleListSwitch",
         :style="calcDelay(index)"
       ).articleList__li
-        //- 在router-link里不能触发click事件
         router-link(
           :to="{name: item.name}",
-          active-class="articleList__link--Active",
-          exact
-        ).articleList__link.u-borderBox.u-link__inherit
-          svg.svg__home.u-va--tb
-            use(xlink:href="#svg__articleIcon")
-          span  {{item.name}} 
+          active-class="articleList__link--Active"
+        ).articleList__link.u-borderBox.u-link__inherit.l-flexV--c
+          .articleList__title
+            svg.svg__home.u-va--tb
+              use(xlink:href="#svg__articleIcon")
+            | {{item.title}} 
 </template>
 
 <script>
@@ -25,23 +24,23 @@ export default {
       list: [
         {
           name: 'vue2_1',
-          title: 'home'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（一）'
         },
         {
           name: 'vue2_2',
-          title: 'article'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（二）'
         },
         {
           name: 'vue2_3',
-          title: 'article'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（三）'
         },
         {
           name: 'vue2_4',
-          title: 'article'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（四）'
         },
         {
           name: 'vue2_5',
-          title: 'article'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（五）'
         }
       ]
     }
@@ -71,16 +70,25 @@ export default {
     transform translateX(-(s-articleList))
     transition transform .3s cb-duang .2s
   .articleList__link
-    display block
     width 100%
-    line-height 50px
+    line-height 1.3em
     padding-left 10px
+    min-height 50px
     background-color rgba(255,255,255,.1)
+    &:hover
+      background-color rgba(255,255,255,.3)
     svg
       transform-origin bottom center
       transform scale(.7)
   .articleList__link--Active
-    background-color rgba(255,255,255,.3)
+    background-color rgba(255,255,255,.4)
   .articleList--Active .articleList__li
     transform translateX(0)
+  .articleList__title
+    display block
+    width 100%
+    font-size 12px
+    &:first-line
+      font-size 14px
 </style>
+    
