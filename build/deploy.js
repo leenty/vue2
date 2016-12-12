@@ -53,5 +53,10 @@ const deploy = function (branch, repository) {
   spinner.stop()
   console.log('\n')
 }
-deploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
-// deploy('gh-pages', 'git@github.com:leenty/vue2.git')
+if (argv._.length > 0) {
+  argv._.forEach(k => deploy(repos[k].branch, repos[k].repo))
+} else {
+  for (let k in repos) {
+    deploy(repos[k].branch, repos[k].repo)
+  }
+}
