@@ -54,4 +54,4 @@ const deploy = function (branch, repository) {
   console.log('\n')
 }
 deploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
-deploy('gh-pages', 'git@github.com:leenty/vue2.git')
+// deploy('gh-pages', 'git@github.com:leenty/vue2.git')
