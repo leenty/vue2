@@ -27,7 +27,6 @@ Date.prototype.format = function(fmt) {
 
 const commitTime = new Date()
 const commitName = `deploy at ${commitTime.format("yyyy-MM-dd hh:mm:ss")}`
-console.log(commitTime, commitTime.getTime());
 // console.log(argv)
 // cd('.deploy')
 // let test = exec('git status')
@@ -52,19 +51,15 @@ console.log(commitTime, commitTime.getTime());
 // const pushDeploy = function (branch, repository) {
 //   exec(`git push -u ${repository} HEAD:${branch} --force`)
 // }
-
-let repo
-let index
-let oid
+let repo, index, oid, remote
 const relativePath = '../.deploy/'
 git.Repository.open('.deploy')
   .then(repoResult => (repo = repoResult, repo.refreshIndex()))
   .then(indexResult => (index = indexResult, repo.getStatus()))
   .then(statuses => {
-    // console.log(statuses[0])
     if (statuses.length > 0) {
       statuses.forEach(file => {
-        console.log(path.join(__dirname, relativePath, file.path()))
+        console.log(`addfile:  ${path.join(__dirname, relativePath, file.path())}`)
         index.addByPath(file.path())
           .then(() => index.write())
           .then(() => index.writeTree())
@@ -74,11 +69,40 @@ git.Repository.open('.deploy')
             var author = git.Signature.default(repo)
             return repo.createCommit("HEAD", author, author, commitName, oid, [parent])
           })
-          .then(console.log)
+          .then(commitId => console.log(`\ncommitInfo:\n--commitId:   ${commitId}\n--commitName: ${commitName}`))
       })
     }
+      // if (argv._.length > 0) {
+      //   argv._.forEach(k => pushDeploy(repos[k].branch, repos[k].repo))
+      // } else {
+      //   for (let k in repos) {
+      //     pushDeploy(repos[k].branch, repos[k].repo)
+      //   }
+      // }
+      // console.log(statuses, 'test')
+      // console.log(git.Remote)
+      // console.log(git.Remote.list().then(console.log))
   })
-
+  .then(() => {
+    return git.Remote.create(repo, 'origin', 'git@git.coding.net:leenty/vue2.leenty.com.git')
+  })
+  .then(remoteResult => {
+    remote = remoteResult
+    console.log(remoteResult, JSON.stringify(remoteResult))
+    return remote.push(
+      ['refs/heads/master:refs/heads/master'],
+      {
+        callbacks: {
+          credentials: function(url, userName) {
+            return git.Cred.sshKeyFromAgent(userName);
+          }
+        }
+      }
+    )}
+  )
+  .then(console.log)
+  .catch(console.log)
+// git push -u git@git.coding.net:leenty/vue2.leenty.com.git HEAD:master --force
 
 // if (argv._.length > 0) {
 //   argv._.forEach(k => pushDeploy(repos[k].branch, repos[k].repo))
