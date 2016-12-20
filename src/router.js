@@ -20,9 +20,7 @@ router.beforeEach((to, from, next) => {
   // to.matched.reverse().forEach((match, k) => {
   //   titleStr += `${k > 0 ? '- ' : ''}${match.meta.title} `
   // })
-  // console.log(to)
-  // to.name === 'Home'
-  //   ?
+  // tips： 直接翻转数组会导致路由嵌套位置的翻转
   if (to.name !== 'Home') {
     for (let i = to.matched.length - 1; i >= 0; i--) {
       titleStr += `${to.matched[i].meta.title} - `
@@ -30,7 +28,6 @@ router.beforeEach((to, from, next) => {
   }
   titleStr += title
   document.title = titleStr
-  // setTimeout(() => next(), 2000)
   next()
 })
 

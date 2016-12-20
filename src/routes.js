@@ -24,7 +24,7 @@ const routes = [
         name: 'vue2_1',
         path: '/article/vue2_1',
         meta: {
-          title: 'vue2_1'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（一）'
         },
         component: require('./md/articles/vue2-1.md')
       },
@@ -32,7 +32,7 @@ const routes = [
         name: 'vue2_2',
         path: '/article/vue2_2',
         meta: {
-          title: 'vue2_2'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（二）'
         },
         component: require('./md/articles/vue2-2.md')
       },
@@ -40,7 +40,7 @@ const routes = [
         name: 'vue2_3',
         path: '/article/vue2_3',
         meta: {
-          title: 'vue2_3'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（三）'
         },
         component: require('./md/articles/vue2-3.md')
       },
@@ -48,7 +48,7 @@ const routes = [
         name: 'vue2_4',
         path: '/article/vue2_4',
         meta: {
-          title: 'vue2_4'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（四）'
         },
         component: require('./md/articles/vue2-4.md')
       },
@@ -56,10 +56,18 @@ const routes = [
         name: 'vue2_5',
         path: '/article/vue2_5',
         meta: {
-          title: 'vue2_5'
+          title: 'vue2.0一起在懵逼的海洋里越陷越深（五）'
         },
         component: require('./md/articles/vue2-5.md')
       }
+      // {
+      //   name: 'vue2_6',
+      //   path: '/article/vue2_6',
+      //   meta: {
+      //     title: 'vue2.0一起在懵逼的海洋里越陷越深（六）'
+      //   },
+      //   component: require('./md/articles/vue2-5.md')
+      // }
     ]
   },
   {
@@ -74,7 +82,7 @@ const routes = [
         name: 'DemoVuexState',
         path: 'vuex_state',
         meta: {
-          title: 'vuex_state'
+          title: 'vuex演示'
         },
         component: require('./components/DemoVuexState.vue')
       }

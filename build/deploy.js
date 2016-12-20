@@ -41,16 +41,18 @@ const commitName = `deploy at ${commitTime.format("yyyy-MM-dd hh:mm:ss")}`
 //   cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', 'dist/article', 'dist/demo', dir])
 //   cd(dir)
 //   exec('git add .')
-//   exec(`git cm -m "deploy at ${deployName}"`)
+//   exec(`git cm -m "deploy at ${commitName}"`)
 //   cd('..')
 
 //   spinner.stop()
 //   console.log('\n')
 // }
+// setDeploy()
 
 // const pushDeploy = function (branch, repository) {
 //   exec(`git push -u ${repository} HEAD:${branch} --force`)
 // }
+
 let repo, index, oid, remote
 const relativePath = '../.deploy/'
 git.Repository.open('.deploy')
@@ -102,6 +104,7 @@ git.Repository.open('.deploy')
   )
   .then(console.log)
   .catch(console.log)
+
 // git push -u git@git.coding.net:leenty/vue2.leenty.com.git HEAD:master --force
 
 // if (argv._.length > 0) {
