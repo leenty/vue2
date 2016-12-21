@@ -3,6 +3,7 @@
   h1.l-ta--c 以下部分皆为(呆萌)
   p
     router-link(:to="{name: 'DemoVuexState'}").u-link vuex State Demo
+    router-link(:to="{name: 'FlexGrid'}").u-link FlexGrid
   .demo__content
     router-view
     //- p

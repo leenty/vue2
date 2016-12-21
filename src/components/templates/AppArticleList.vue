@@ -1,5 +1,18 @@
 <template lang="pug">
   .articleList(:class="{'articleList--Active': articleList}").l-page--Full
+    .articleList__nav
+      .articleList__title
+        svg.svg__code
+          use(xlink:href="#svg__code")
+        span article
+      .articleList__title
+        svg.svg__code
+          use(xlink:href="#svg__tags")
+        span tags
+      .articleList__title
+        svg.svg__code
+          use(xlink:href="#svg__series")
+        span series
     ul.articleList__content.u-ul--Reset
       li(
         v-for="(item, index) in list",
@@ -18,31 +31,11 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import list from 'src/articleList.json'
 export default {
   data () {
     return {
-      list: [
-        {
-          name: 'vue2_1',
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（一）'
-        },
-        {
-          name: 'vue2_2',
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（二）'
-        },
-        {
-          name: 'vue2_3',
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（三）'
-        },
-        {
-          name: 'vue2_4',
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（四）'
-        },
-        {
-          name: 'vue2_5',
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（五）'
-        }
-      ]
+      list
     }
   },
   computed: mapGetters(['articleList']),

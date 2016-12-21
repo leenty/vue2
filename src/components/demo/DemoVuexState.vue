@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="stylus">
-  @import '../assets/stylus/preinstall'
+  @import '../../assets/stylus/preinstall'
   .demo__userCard
     max-width 300px
     border 1px solid c-master

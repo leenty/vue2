@@ -3,6 +3,8 @@
 // import Demo from './components/Demo.vue'
 // import DemoVuexState from './components/DemoVuexState.vue'
 
+import articles from './articlesRoutes.js'
+
 const routes = [
   {
     name: 'Home',
@@ -19,56 +21,7 @@ const routes = [
       title: 'article'
     },
     component: require('./components/Article.vue'),
-    children: [
-      {
-        name: 'vue2_1',
-        path: '/article/vue2_1',
-        meta: {
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（一）'
-        },
-        component: require('./md/articles/vue2-1.md')
-      },
-      {
-        name: 'vue2_2',
-        path: '/article/vue2_2',
-        meta: {
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（二）'
-        },
-        component: require('./md/articles/vue2-2.md')
-      },
-      {
-        name: 'vue2_3',
-        path: '/article/vue2_3',
-        meta: {
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（三）'
-        },
-        component: require('./md/articles/vue2-3.md')
-      },
-      {
-        name: 'vue2_4',
-        path: '/article/vue2_4',
-        meta: {
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（四）'
-        },
-        component: require('./md/articles/vue2-4.md')
-      },
-      {
-        name: 'vue2_5',
-        path: '/article/vue2_5',
-        meta: {
-          title: 'vue2.0一起在懵逼的海洋里越陷越深（五）'
-        },
-        component: require('./md/articles/vue2-5.md')
-      }
-      // {
-      //   name: 'vue2_6',
-      //   path: '/article/vue2_6',
-      //   meta: {
-      //     title: 'vue2.0一起在懵逼的海洋里越陷越深（六）'
-      //   },
-      //   component: require('./md/articles/vue2-5.md')
-      // }
-    ]
+    children: articles
   },
   {
     name: 'Demo',
@@ -84,7 +37,15 @@ const routes = [
         meta: {
           title: 'vuex演示'
         },
-        component: require('./components/DemoVuexState.vue')
+        component: require('./components/demo/DemoVuexState.vue')
+      },
+      {
+        name: 'FlexGrid',
+        path: 'flexgrid',
+        meta: {
+          title: 'flexGrid'
+        },
+        component: require('./components/demo/FlexGrid.vue')
       }
     ]
   }

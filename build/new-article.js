@@ -50,25 +50,54 @@ const getInfo = function (name) {
   return Promise.all(prmArr)
 }
 
-const createRoute = function (infoArr) {
+const createArticleList = function (infoArr) {
+  let prm = new Promise((resolve, reject) => {
+    let routesStr = '['
+    infoArr.forEach((v, k) => {
+      let articleName = v.fileName.replace(' ', '_').replace('-', '_')
+      routesStr += `${k ? ', ' : ''}{`
+        +   `"name": "${articleName}", `
+        +   `"title": "${v.title}"`
+        + `}`
+    })
+    routesStr += ']'
+    fs.writeFile(path.join(__dirname, `../src/articleList.json`), routesStr, err => {
+      err && reject(err)
+      resolve('\n文章列表生成完毕！')
+    })
+  })
+  return prm
+}
+
+const createRoutes = function (infoArr) {
   let prm = new Promise((resolve, reject) => {
     let routesStr = 'const articlesRouter = ['
     infoArr.forEach((v, k) => {
-      let articleName = v.fileName.replace(' ', '_')
-      routesStr += `${k ? ',' : ''}{`
-        +   `name: '${articleName}',`
-        +   `path: '/${v.date}/${articleName}',`
+      let articleName = v.fileName.replace(' ', '_').replace('-', '_')
+      routesStr += `${k ? ', ' : ''}{`
+        +   `name: '${articleName}', `
+        +   `path: '/${v.date}/${articleName}', `
+        +   `meta: {title: '${v.title}'}, `
         +   `component: require('./md/articles/${v.fileName}.md')`
         + `}`
     })
     routesStr += ']\nexport default articlesRouter\n'
     fs.writeFile(path.join(__dirname, `../src/articlesRoutes.js`), routesStr, err => {
       err && reject(err)
-      resolve('路由生成完毕！')
+      resolve('\n路由生成完毕！')
     })
   })
   return prm
 }
+
+const generateRouter = function (infoArr) {
+  let prmArr = []
+  prmArr.push(createRoutes(infoArr))
+  prmArr.push(createArticleList(infoArr))
+  return Promise.all(prmArr)
+}
+
+/***********************/
 
 const setInfo = function (name) {
   const date = new Date().format("yyyy/MM/dd")
@@ -84,7 +113,7 @@ const createArticle = function (name) {
   const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
   fs.writeFile(articlePath, setInfo(name), err => {
     err && console.log(err)
-    console.log(`create article @ path: ${articlePath}`)
+    console.log(`新建文章${name}\n路径: ${articlePath}`)
   })
 }
 
@@ -92,8 +121,8 @@ const createArticle = function (name) {
   createArticle(arg.n ? arg.n : arg.new)
   getArticleList()
     .then(getInfo, console.log)
-    .then(createRoute, console.log)
-    .then(console.log, console.log)
+    .then(generateRouter, console.log)
+    .then(log => console.log(...log), console.log)
 })(argv)
 
 // var temp = require('../src/articles.json')

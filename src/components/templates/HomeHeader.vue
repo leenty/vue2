@@ -19,6 +19,14 @@
           svg.svg__code
             use(xlink:href="#svg__code")
           span article
+        //- router-link(to="/tags").u-link__inherit.header__link.l-flexV--c
+        //-   svg.svg__code
+        //-     use(xlink:href="#svg__code")
+        //-   span tags
+        //- router-link(to="/series").u-link__inherit.header__link.l-flexV--c
+        //-   svg.svg__code
+        //-     use(xlink:href="#svg__code")
+        //-   span series
         router-link(
           to="/demo"
         ).u-link__inherit.header__link.l-flexV--c
