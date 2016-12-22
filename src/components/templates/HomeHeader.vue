@@ -53,7 +53,7 @@ export default {
     ]),
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
-      isScrollDown: ({status}) => status.scroll.scrollTop > 0,
+      isScrollDown: ({status}) => status.scroll.scrollTop > 210,
       trfFixedStyle: ({status}) => {
         return {
           'top': status.articleList ? `${status.scroll.scrollTop - 1}px` : '0px'

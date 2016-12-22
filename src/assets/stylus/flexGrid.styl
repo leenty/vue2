@@ -1,9 +1,13 @@
-.fg-row
+row()
   display flex
   flex-flow column wrap
-.fg-col
+col()
   display flex
   flex-flow row wrap
+.fg-row
+  row()
+.fg-col
+  col()
 .fg-row--reverse
   display flex
   flex-flow column-reverse wrap
@@ -17,7 +21,7 @@
   flex-wrap wrap-reverse
 
 grid(items)
-  width (items/24*100) %
+  // width (items/24*100) %
   flex-basis (items/24*100) %
 
 offset(items)
@@ -127,8 +131,69 @@ offset(items)
 .fg-offset-1
    offset(1)
 
-// mobile < 768px
+// pad < 768px
 @media screen and (max-width: pad)
+  .fg-pad-row
+    row()
+  .fg-pad-col
+    col()
+  .fg-pad-24
+    grid(24)
+  .fg-pad-23
+    grid(23)
+  .fg-pad-22
+    grid(22)
+  .fg-pad-21
+    grid(21)
+  .fg-pad-20
+    grid(20)
+  .fg-pad-19
+    grid(19)
+  .fg-pad-18
+    grid(18)
+  .fg-pad-17
+    grid(17)
+  .fg-pad-17
+    grid(17)
+  .fg-pad-16
+    grid(16)
+  .fg-pad-15
+    grid(15)
+  .fg-pad-14
+    grid(14)
+  .fg-pad-13
+    grid(13)
+  .fg-pad-12
+    grid(12)
+  .fg-pad-11
+    grid(11)
+  .fg-pad-10
+    grid(10)
+  .fg-pad-9
+    grid(9)
+  .fg-pad-8
+    grid(8)
+  .fg-pad-7
+    grid(7)
+  .fg-pad-6
+    grid(6)
+  .fg-pad-5
+    grid(5)
+  .fg-pad-4
+    grid(4)
+  .fg-pad-3
+    grid(3)
+  .fg-pad-2
+    grid(2)
+  .fg-pad-1
+    grid(1)
+
+// mobile < 500px
+@media screen and (max-width: mobile)
+  .fg-mb-row
+    row()
+  .fg-mb-col
+    col()
   .fg-mb-24
     grid(24)
   .fg-mb-23

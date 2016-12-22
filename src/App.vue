@@ -52,7 +52,6 @@
     //     })
     // }
   }
-console.log('\n %c  leenty blog %c http://leenty.com/ \n\n', 'color: #fff; background: #1abc9c; padding:5px 0;', 'color: #34495e;background: #edeef0; padding:5px 0;')
 </script>
 
 <style lang="stylus">

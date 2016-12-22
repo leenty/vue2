@@ -16,3 +16,6 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('.app')
+
+console.log('\n %c leenty blog %c http://leenty.com \n\n', 'color: #fff; background: #1abc9c; padding:5px 0;border-radius: 5px 0 0 5px;', 'color: #34495e;background: #edeef0; padding:5px 0;border-radius: 0 5px 5px 0')
+
