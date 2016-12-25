@@ -1,8 +1,8 @@
 <template lang="pug">
   .flexGrid
     h1 flexGrid
-    h3.l-mt20 dom: .fg-col
-    .flexGrid__bg.fg-col
+    h3.l-mt20 dom: .fg-row
+    .flexGrid__bg.fg-row
       .fg-24 .fg-24 
       .fg-12 .fg-12
       .fg-9.fg-offset-3 .fg-9 .fg-offset-3
@@ -11,14 +11,14 @@
       .fg-8 .fg-8
       .fg-2 .fg-2
 
-    h3.l-mt20 dom: .fg-col>(.fg-12.fg-pad-24)+(.fg-12.fg-pad-24.fg-row.fg-pad-col)
-    .flexGrid__bg.fg-col
-      .flexGrid__100h.fg-12.fg-pad-24 .fg-12.fg-pad-24
-      .flexGrid__100h.fg-12.fg-pad-24.fg-row.fg-pad-col
-        .fg-12.fg-pad-6.fg-mb-12 .fg-12.fg-pad-6.fg-mb-12
-        .fg-12.fg-pad-6.fg-mb-12 .fg-12.fg-pad-6.fg-mb-12
-        .fg-12.fg-pad-6.fg-mb-12 .fg-12.fg-pad-6.fg-mb-12
-        .fg-12.fg-pad-6.fg-mb-12 .fg-12.fg-pad-6.fg-mb-12
+    h3.l-mt20 dom: .fg-row>(.fg-12.fg__pad-24)+(.fg-12.fg__pad-24.fg-col.fg__pad-row)
+    .flexGrid__bg.fg-row
+      .flexGrid__100h.fg-12.fg__pad-24 .fg-12.fg__pad-24
+      .flexGrid__100h.fg-12.fg__pad-24.fg-row
+        .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
+        .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
+        .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
+        .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
 </template>
 
 <script>

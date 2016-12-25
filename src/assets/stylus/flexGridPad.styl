@@ -1,0 +1,161 @@
+// pad < 768px
+@media screen and (max-width: pad)
+  fgDirPad(dir)
+    .fg__pad-24
+      if dir == 1
+        fg-row-grid(24)
+      else
+        fg-col-grid(24)
+    .fg__pad-23
+      if dir == 1
+        fg-row-grid(23)
+      else
+        fg-col-grid(23)
+    .fg__pad-22
+      if dir == 1
+        fg-row-grid(22)
+      else
+        fg-col-grid(22)
+    .fg__pad-21
+      if dir == 1
+        fg-row-grid(21)
+      else
+        fg-col-grid(21)
+    .fg__pad-20
+      if dir == 1
+        fg-row-grid(20)
+      else
+        fg-col-grid(20)
+    .fg__pad-19
+      if dir == 1
+        fg-row-grid(19)
+      else
+        fg-col-grid(19)
+    .fg__pad-18
+      if dir == 1
+        fg-row-grid(18)
+      else
+        fg-col-grid(18)
+    .fg__pad-17
+      if dir == 1
+        fg-row-grid(17)
+      else
+        fg-col-grid(17)
+    .fg__pad-17
+      if dir == 1
+        fg-row-grid(17)
+      else
+        fg-col-grid(17)
+    .fg__pad-16
+      if dir == 1
+        fg-row-grid(16)
+      else
+        fg-col-grid(16)
+    .fg__pad-15
+      if dir == 1
+        fg-row-grid(15)
+      else
+        fg-col-grid(15)
+    .fg__pad-14
+      if dir == 1
+        fg-row-grid(14)
+      else
+        fg-col-grid(14)
+    .fg__pad-13
+      if dir == 1
+        fg-row-grid(13)
+      else
+        fg-col-grid(13)
+    .fg__pad-12
+      if dir == 1
+        fg-row-grid(12)
+      else
+        fg-col-grid(12)
+    .fg__pad-11
+      if dir == 1
+        fg-row-grid(11)
+      else
+        fg-col-grid(11)
+    .fg__pad-10
+      if dir == 1
+        fg-row-grid(10)
+      else
+        fg-col-grid(10)
+    .fg__pad-9
+      if dir == 1
+        fg-row-grid(9)
+      else
+        fg-col-grid(9)
+    .fg__pad-8
+      if dir == 1
+        fg-row-grid(8)
+      else
+        fg-col-grid(8)
+    .fg__pad-7
+      if dir == 1
+        fg-row-grid(7)
+      else
+        fg-col-grid(7)
+    .fg__pad-6
+      if dir == 1
+        fg-row-grid(6)
+      else
+        fg-col-grid(6)
+    .fg__pad-5
+      if dir == 1
+        fg-row-grid(5)
+      else
+        fg-col-grid(5)
+    .fg__pad-4
+      if dir == 1
+        fg-row-grid(4)
+      else
+        fg-col-grid(4)
+    .fg__pad-3
+      if dir == 1
+        fg-row-grid(3)
+      else
+        fg-col-grid(3)
+    .fg__pad-2
+      if dir == 1
+        fg-row-grid(2)
+      else
+        fg-col-grid(2)
+    .fg__pad-1
+      if dir == 1
+        fg-row-grid(1)
+      else
+        fg-col-grid(1)
+
+  .fg-row,
+  .fg__pad-row
+    fg-row(0)
+    &>
+      fgDirPad(1)
+  .fg-col,
+  .fg__pad-col
+    fg-col(0)
+    &>
+      fgDirPad(0)
+  .fg-row--r,
+  .fg__pad-row--r
+    fg-row(r)
+    &>
+      fgDirPad(1)
+  .fg-col--r,
+  .fg__pad-col--r
+    fg-col(r)
+    &>
+      fgDirPad(0)
+
+  .fg__pad-jc--b
+    fg-jc(sb)
+  .fg__pad-ai--c
+    fg-ai(c)
+    
+  .fg__pad-wrap
+    fg-wrap(0)
+  .fg__pad-wrap--no
+    fg-wrap(no)
+  .fg__pad-wrap--r
+    fg-wrap(r)
