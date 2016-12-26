@@ -3,7 +3,8 @@
     :class="{'header--scroll': isScrollDown}"
   ).header.u-clearfix
     .header__content(
-      :style="trfFixedStyle"
+      :style="trfFixedStyle",
+      :data-author="author"
     )
       .header__listSwitch
         button(
@@ -40,7 +41,8 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      temp: 12
+      temp: 12,
+      author: 'leenty'
     }
   },
   computed: {
@@ -69,6 +71,9 @@ export default {
 
 <style lang="stylus">
   @import '../../assets/stylus/preinstall'
+  menuMargin = 90px
+  menuMinHeight = 50px
+  menuMaxHeight = 120px
   .header
     height 160px
     margin-bottom 60px
@@ -82,13 +87,23 @@ export default {
     width 100%
     background-color c-master
     transition top 1ms .5s
+    &:after
+      position absolute
+      bottom (menuMargin / 2 + menuMaxHeight)
+      transition bottom .5ms
+      left 50%
+      transform translate(-50%,50%)
+      content attr(data-author)
+      color rgba(255,255,255,.4)
+      font-size 30px
+      font-family fantasy
   .app__content--Active .header__content
     transition auto
   .header__menu
     max-width max-width
     background-color c-ff
-    margin 90px auto 0
-    height 120px
+    margin menuMargin auto 0
+    height menuMaxHeight
     transition all .5s cb-duang
     position relative
     z-index 1
@@ -107,22 +122,24 @@ export default {
   .header__switch
     z-index 10
   .header--scroll
-    height 50px
+    height menuMinHeight
     margin-bottom 20px
+    .header__content:after
+      bottom (menuMargin / 2 + menuMinHeight)
     .header__menu
       // margin-top 45px
       margin-top 0
       max-width 100%
-      height 50px
+      height menuMinHeight
       background-color transparent
     .header__link
       color rgba(255,255,255,.6)
-      width 50px
+      width menuMinHeight
       height @width
     .u-link--Active
       color #fff
     .header__listSwitch
-      top 90vh
+      top 85vh
       left 5vw
       background-color c-master
       padding 10px
