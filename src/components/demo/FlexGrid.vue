@@ -1,6 +1,6 @@
 <template lang="pug">
   .flexGrid
-    h1 flexGrid
+    h1 flexGrid 研究中...
     h3.l-mt20 dom: .fg-row
     .flexGrid__bg.fg-row
       .fg-24 .fg-24 

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
 
-const title = 'leenty blog'
+const title = 'leenty blog Demo'
 
 Vue.use(VueRouter)
 

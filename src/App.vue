@@ -7,8 +7,10 @@
       @scroll="pushScrollData"
     ).l-page--Full
       home-header
-      .app__bodyer.l-mH--auto
-        router-view
+      .app__bodyer.l-mH--auto.u-clearfix
+        transition(name="slideFade")
+          router-view
+          //- ,mode="out-in"
     include ./assets/svg/all
 </template>
 
@@ -69,7 +71,26 @@
   .app__bodyer
     max-width max-width
     background-color c-bgc
+    position relative
   @media screen and (max-width: max-width)
     .app__bodyer
       padding 0 10px
+    .slideFade-enter-active,
+    .slideFade-leave-active
+      left 10px
+  .slideFade-enter-active,
+  .slideFade-leave-active
+    transition all .5s cb-duang
+    width 100%
+    position absolute
+    top 0
+    left 0
+    opacity 1
+  .slideFade-enter
+    transform translateX(100%) scale(.3)
+    opacity 0
+  .slideFade-leave-active
+    transform translateX(-100%) scale(.3)
+    opacity 0
+    
 </style>

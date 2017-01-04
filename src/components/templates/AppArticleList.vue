@@ -1,6 +1,6 @@
 <template lang="pug">
   .articleList(:class="{'articleList--Active': articleList}").l-page--Full
-    .articleList__nav
+    //- .articleList__nav
       .articleList__title
         svg.svg__code
           use(xlink:href="#svg__code")
