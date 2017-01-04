@@ -82,7 +82,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     new PrerenderSpaPlugin(
       path.join(__dirname, '../dist'),
-      ['/', '/article', '/article/vue2_1', '/article/vue2_2', '/article/vue2_3', '/article/vue2_4', '/article/vue2_5', '/demo', '/demo/vuex_state' ]
+      ['/', '/article', '/2016/10/21/vue2_1', '/2016/11/20/vue2_2', '/2016/11/27/vue2_3', '/2016/12/04/vue2_4', '/2016/12/11/vue2_5', '/2016/12/18/vue2_6', '/2017/01/04/vue2_7', '/demo', '/demo/vuex_state', '/demo/flexgrid' ]
       // {
       //   // captureAfterDocumentEvent: 'DOMContentLoaded',
       //   // captureAfterElementExists: '.app',

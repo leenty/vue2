@@ -1,3 +1,5 @@
+// node build/new-article.js --new 'vue2-7'
+
 var path = require('path')
 var fs = require("fs")
 
