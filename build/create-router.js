@@ -1,9 +1,11 @@
-// node build/new-article.js --new 'vue2-7'
-
 var path = require('path')
 var fs = require("fs")
 
 const relativePath = '../src/md/articles/'
+
+const replaceArticleName = function (articleName) {
+  return articleName.replace(' ', '_').replace('-', '_')
+}
 
 const getArticleList = function () {
   let prm = new Promise((resolve, reject) => {
@@ -30,30 +32,11 @@ const getArticleInfo = function (name) {
   return Promise.all(prmArr)
 }
 
-const createArticleList = function (infoArr) {
-  let prm = new Promise((resolve, reject) => {
-    let routesStr = '['
-    infoArr.forEach((v, k) => {
-      let articleName = v.fileName.replace(' ', '_').replace('-', '_')
-      routesStr += `${k ? ', ' : ''}{`
-        +   `"name": "${articleName}", `
-        +   `"title": "${v.title}"`
-        + `}`
-    })
-    routesStr += ']'
-    fs.writeFile(path.join(__dirname, `../src/articleList.json`), routesStr, err => {
-      err && reject(err)
-      resolve('\n文章列表生成完毕！')
-    })
-  })
-  return prm
-}
-
 const createRoutes = function (infoArr) {
   let prm = new Promise((resolve, reject) => {
     let routesStr = 'const articlesRouter = ['
     infoArr.forEach((v, k) => {
-      let articleName = v.fileName.replace(' ', '_').replace('-', '_')
+      let articleName = replaceArticleName(v.fileName)
       routesStr += `${k ? ', ' : ''}{`
         +   `name: '${articleName}', `
         +   `path: '/${v.date}/${articleName}', `
@@ -74,10 +57,52 @@ const generateRouter = function (infoArr) {
   let prmArr = []
   prmArr.push(createRoutes(infoArr))
   prmArr.push(createArticleList(infoArr))
+  prmArr.push(createPreRender(infoArr))
   return Promise.all(prmArr)
 }
 
+/*****************************/
+
+const createArticleList = function (infoArr) {
+  let prm = new Promise((resolve, reject) => {
+    let routesStr = '['
+    infoArr.forEach((v, k) => {
+      let articleName = replaceArticleName(v.fileName)
+      routesStr += `${k ? ', ' : ''}{`
+        +   `"name": "${articleName}", `
+        +   `"title": "${v.title}"`
+        + `}`
+    })
+    routesStr += ']'
+    fs.writeFile(path.join(__dirname, `../src/articleList.json`), routesStr, err => {
+      err && reject(err)
+      resolve('\n文章列表生成完毕！')
+    })
+  })
+  return prm
+}
+
+/*******************************/
+
+const createPreRender = function (infoArr) {
+  let prm = new Promise((resolve, reject) => {
+    let preRenderArr = 'const preRenderArr = ['
+    infoArr.forEach((v, k) => {
+      let articleName = replaceArticleName(v.fileName)
+      preRenderArr += `${k ? ', ' : ''}'/${v.date}/${articleName}'`
+    })
+    preRenderArr += `]\n export default preRenderArr`
+    fs.writeFile(path.join(__dirname, `../src/articlesPreRender.js`), preRenderArr, err => {
+      err && reject(err)
+      resolve('\n预渲染路由生成完毕！')
+    })
+  })
+  return prm
+}
+
 exports.createArticleList = createArticleList
+
+exports.createPreRender = createPreRender
 
 exports.createRouter = function () {
   getArticleList()

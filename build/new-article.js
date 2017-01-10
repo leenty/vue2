@@ -1,4 +1,4 @@
-// node build/new-article.js --new 'vue2-7'
+// node build/new-article.js --new 'fileName'
 
 var path = require('path')
 var fs = require("fs")
@@ -26,7 +26,7 @@ Date.prototype.format = function(fmt) {
   return fmt
 } 
 
-var argv = require('minimist')(process.argv.slice(2))
+var arg = require('minimist')(process.argv.slice(2))
 /***********************/
 
 const setAritcleInfo = function (name) {
@@ -40,17 +40,57 @@ const setAritcleInfo = function (name) {
 }
 
 const createArticle = function (name) {
-  const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
-  fs.writeFile(articlePath, setAritcleInfo(name), err => {
-    err && console.log(err)
-    console.log(`新建文章${name}\n路径: ${articlePath}`)
+  let prm = new Promise((resolve, reject) => {
+    if (!name || name == 0) {
+      reject(
+        `错误的文件名 ${name}` +
+        `\n请使用：` +
+        `\n    npm run article -- --new 'fileName'` +
+        `创建文章`
+      )
+    } else {
+      const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
+      fs.writeFile(articlePath, setAritcleInfo(name), err => {
+        err && reject(err)
+        resolve(`新建文章${name}\n路径: ${articlePath}`)
+      })
+    }
   })
+  return prm
 }
 
-;(function (arg) {
-  createArticle(arg.n ? arg.n : arg.new)
-  router.createRouter()
-})(argv)
+const checkArg = function () {
+  if (arg.n || arg.new) {
+    return {
+      type: 'new',
+      arg: arg.new ? arg.new : arg.n
+    }
+  }
+  if (arg.r || arg.render) {
+    return {
+      type: 'render',
+      arg: arg.render ? arg.render : arg.r
+    }
+  }
+  console.log(`npm run article -- --new 'fileName'  |  new article\n`
+    +         `npm run article -- -n 'fileName'     |  --new alias\n`
+    +         `npm run article -- --render          |  render router\n`
+    +         `npm run article -- -r                |  --render alias\n`
+    +         `npm run article -- --help            |  help\n`
+    +         `npm run article -- -h                |  --help alias\n`);
+  return false
+}
+
+;(function () {
+  let argObj = checkArg()
+  argObj &&
+    (argObj.type === 'new'
+      ? createArticle(argObj.arg).then(done => {
+          console.log(done)
+          return router.createRouter()
+        }).catch(console.log)
+      : router.createRouter())
+})()
 
 // var temp = require('../src/articles.json')
 // console.log(temp, typeof temp)
