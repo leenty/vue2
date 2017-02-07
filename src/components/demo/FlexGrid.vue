@@ -1,7 +1,8 @@
 <template lang="pug">
   .flexGrid
     h1 flexGrid 研究中...
-    h3.l-mt20 dom: .fg-row
+    h4 (试着改变浏览器大小以查看响应式)
+    h3.l-mt20 dom: .fg-row>.fg-24+.fg-12+.fg-9.fg-offset-3+.fg-4.fg-offset-4+.fg-6+.fg-8+.fg-2
     .flexGrid__bg.fg-row
       .fg-24 .fg-24 
       .fg-12 .fg-12
@@ -11,7 +12,7 @@
       .fg-8 .fg-8
       .fg-2 .fg-2
 
-    h3.l-mt20 dom: .fg-row>(.fg-12.fg__pad-24)+(.fg-12.fg__pad-24.fg-col.fg__pad-row)
+    h3.l-mt20 dom: .fg-row>(.fg-12.fg__pad-24)+(.fg-12.fg__pad-24.fg-row>.fg-12.fg__pad-6.fg__mb-12*4)
     .flexGrid__bg.fg-row
       .flexGrid__100h.fg-12.fg__pad-24 .fg-12.fg__pad-24
       .flexGrid__100h.fg-12.fg__pad-24.fg-row
@@ -19,6 +20,10 @@
         .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
         .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
         .fg-12.fg__pad-6.fg__mb-12 .fg-12.fg__pad-6.fg__mb-12
+
+    h3.l-mt20 dom:
+    .flexGrid__bg.fg-row
+
 </template>
 
 <script>

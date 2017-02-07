@@ -11,12 +11,14 @@
         transition(name="slideFade")
           router-view
           //- ,mode="out-in"
+    //- loading
     include ./assets/svg/all
 </template>
 
 <script>
   import HomeHeader from './components/templates/HomeHeader.vue'
   import AppArticleList from './components/templates/AppArticleList.vue'
+  import Loading from './components/feedback/Loading.vue'
   import { mapGetters, mapActions } from 'vuex'
   // import fullScreen from './utils/fullScreen'
   export default {
@@ -25,6 +27,7 @@
       }
     },
     components: {
+      Loading,
       HomeHeader,
       AppArticleList
     },
@@ -41,18 +44,6 @@
         e.direction === 'Left' && this.articleList && this.articleListSwitch()
       }
     }
-    // created () {
-      // console.log('test')
-      // fullScreen()
-    // }
-    // ready () {
-    //   console.log('test')
-    //   console.log(document.querySelector('.app__content'))
-    //   document.querySelector('.app__content')
-    //     .addEventListener('scroll', e => {
-    //       console.log(e)
-    //     })
-    // }
   }
 </script>
 

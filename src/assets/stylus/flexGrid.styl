@@ -20,9 +20,22 @@ fg-jc(v)
     justify-content space-around
   if v == 'c'
     justify-content center
+  if v == 'fs'
+    justify-content flex-start
+  if v == 'fe'
+    justify-content flex-end
   
 fg-ai(v)
-  align-items center
+  if v == 'c'
+    align-items center
+  if v == 'bl'
+    align-items baseline
+  if v == 'fs'
+    align-items flex-start
+  if v == 'fe'
+    align-items flex-end
+  if v == 'st'
+    align-items stretch
 
 fg-wrap(v)
   if v == 'no'
@@ -33,11 +46,11 @@ fg-wrap(v)
     flex-wrap wrap
 
 fg-row-grid(items)
-  width (items/24*100) %
+  // width (items/24*100) %
   flex-basis (items/24*100) %
 
 fg-col-grid(items)
-  height (items/24*100) %
+  // height (items/24*100) %
   flex-basis (items/24*100) %
 
 fg-offset(items)
