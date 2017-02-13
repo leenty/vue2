@@ -1,146 +1,74 @@
-fgDir(dir)
-  .fg-24
-    if dir == 1
-      fg-row-grid(24)
-    else
-      fg-col-grid(24)
-  .fg-23
-    if dir == 1
-      fg-row-grid(23)
-    else
-      fg-col-grid(23)
-  .fg-22
-    if dir == 1
-      fg-row-grid(22)
-    else
-      fg-col-grid(22)
-  .fg-21
-    if dir == 1
-      fg-row-grid(21)
-    else
-      fg-col-grid(21)
-  .fg-20
-    if dir == 1
-      fg-row-grid(20)
-    else
-      fg-col-grid(20)
-  .fg-19
-    if dir == 1
-      fg-row-grid(19)
-    else
-      fg-col-grid(19)
-  .fg-18
-    if dir == 1
-      fg-row-grid(18)
-    else
-      fg-col-grid(18)
-  .fg-17
-    if dir == 1
-      fg-row-grid(17)
-    else
-      fg-col-grid(17)
-  .fg-17
-    if dir == 1
-      fg-row-grid(17)
-    else
-      fg-col-grid(17)
-  .fg-16
-    if dir == 1
-      fg-row-grid(16)
-    else
-      fg-col-grid(16)
-  .fg-15
-    if dir == 1
-      fg-row-grid(15)
-    else
-      fg-col-grid(15)
-  .fg-14
-    if dir == 1
-      fg-row-grid(14)
-    else
-      fg-col-grid(14)
-  .fg-13
-    if dir == 1
-      fg-row-grid(13)
-    else
-      fg-col-grid(13)
-  .fg-12
-    if dir == 1
-      fg-row-grid(12)
-    else
-      fg-col-grid(12)
-  .fg-11
-    if dir == 1
-      fg-row-grid(11)
-    else
-      fg-col-grid(11)
-  .fg-10
-    if dir == 1
-      fg-row-grid(10)
-    else
-      fg-col-grid(10)
-  .fg-9
-    if dir == 1
-      fg-row-grid(9)
-    else
-      fg-col-grid(9)
-  .fg-8
-    if dir == 1
-      fg-row-grid(8)
-    else
-      fg-col-grid(8)
-  .fg-7
-    if dir == 1
-      fg-row-grid(7)
-    else
-      fg-col-grid(7)
-  .fg-6
-    if dir == 1
-      fg-row-grid(6)
-    else
-      fg-col-grid(6)
-  .fg-5
-    if dir == 1
-      fg-row-grid(5)
-    else
-      fg-col-grid(5)
-  .fg-4
-    if dir == 1
-      fg-row-grid(4)
-    else
-      fg-col-grid(4)
-  .fg-3
-    if dir == 1
-      fg-row-grid(3)
-    else
-      fg-col-grid(3)
-  .fg-2
-    if dir == 1
-      fg-row-grid(2)
-    else
-      fg-col-grid(2)
-  .fg-1
-    if dir == 1
-      fg-row-grid(1)
-    else
-      fg-col-grid(1)
-
 .fg-row
-  fg-row(0)
-  &>
-    fgDir(1)
+  fg-row(null)
 .fg-col
-  fg-col(0)
-  &>
-    fgDir(0)
+  fg-col(null)
 .fg-row--r
   fg-row(r)
-  &>
-    fgDir(1)
 .fg-col--r
   fg-col(r)
-  &>
-    fgDir(0)
+
+.fg-wrap--no
+  fg-wrap(no)
+.fg-wrap--r
+  fg-wrap(r)
+.fg-wrap
+  fg-wrap(null)
+  
+.fg-auto
+  fg-auto()
+.fg-full
+  fg-full()
+
+.fg-24
+  fg-grid(24)
+.fg-23
+  fg-grid(23)
+.fg-22
+  fg-grid(22)
+.fg-21
+  fg-grid(21)
+.fg-20
+  fg-grid(20)
+.fg-19
+  fg-grid(19)
+.fg-18
+  fg-grid(18)
+.fg-17
+  fg-grid(17)
+.fg-17
+  fg-grid(17)
+.fg-16
+  fg-grid(16)
+.fg-15
+  fg-grid(15)
+.fg-14
+  fg-grid(14)
+.fg-13
+  fg-grid(13)
+.fg-12
+  fg-grid(12)
+.fg-11
+  fg-grid(11)
+.fg-10
+  fg-grid(10)
+.fg-9
+  fg-grid(9)
+.fg-8
+  fg-grid(8)
+.fg-7
+  fg-grid(7)
+.fg-6
+  fg-grid(6)
+.fg-5
+  fg-grid(5)
+.fg-4
+  fg-grid(4)
+.fg-3
+  fg-grid(3)
+.fg-2
+  fg-grid(2)
+.fg-1
+  fg-grid(1)
 
 .fg-jc--sb
   fg-jc(sb)
@@ -164,18 +92,13 @@ fgDir(dir)
 .fg-ai--st
   fg-ai(st)
 
-  
-.fg-wrap
-  fg-wrap(0)
-.fg-wrap--no
-  fg-wrap(no)
-.fg-wrap--r
-  fg-wrap(r)
-  
-.fg-auto
-  fg-auto()
-.fg-full
-  fg-full()
+.fg-after-1
+  fg-order(1)
+.fg-before-1
+  fg-order(-1)
+.fg-after-0,
+.fg-before-0
+  fg-order(0)
 
 /*** offset ***/
 .fg-offset-24

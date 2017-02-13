@@ -1,152 +1,76 @@
 // pad < 768px
 @media screen and (max-width: pad)
-  fgDirPad(dir)
-    .fg__pad-24
-      if dir == 1
-        fg-row-grid(24)
-      else
-        fg-col-grid(24)
-    .fg__pad-23
-      if dir == 1
-        fg-row-grid(23)
-      else
-        fg-col-grid(23)
-    .fg__pad-22
-      if dir == 1
-        fg-row-grid(22)
-      else
-        fg-col-grid(22)
-    .fg__pad-21
-      if dir == 1
-        fg-row-grid(21)
-      else
-        fg-col-grid(21)
-    .fg__pad-20
-      if dir == 1
-        fg-row-grid(20)
-      else
-        fg-col-grid(20)
-    .fg__pad-19
-      if dir == 1
-        fg-row-grid(19)
-      else
-        fg-col-grid(19)
-    .fg__pad-18
-      if dir == 1
-        fg-row-grid(18)
-      else
-        fg-col-grid(18)
-    .fg__pad-17
-      if dir == 1
-        fg-row-grid(17)
-      else
-        fg-col-grid(17)
-    .fg__pad-17
-      if dir == 1
-        fg-row-grid(17)
-      else
-        fg-col-grid(17)
-    .fg__pad-16
-      if dir == 1
-        fg-row-grid(16)
-      else
-        fg-col-grid(16)
-    .fg__pad-15
-      if dir == 1
-        fg-row-grid(15)
-      else
-        fg-col-grid(15)
-    .fg__pad-14
-      if dir == 1
-        fg-row-grid(14)
-      else
-        fg-col-grid(14)
-    .fg__pad-13
-      if dir == 1
-        fg-row-grid(13)
-      else
-        fg-col-grid(13)
-    .fg__pad-12
-      if dir == 1
-        fg-row-grid(12)
-      else
-        fg-col-grid(12)
-    .fg__pad-11
-      if dir == 1
-        fg-row-grid(11)
-      else
-        fg-col-grid(11)
-    .fg__pad-10
-      if dir == 1
-        fg-row-grid(10)
-      else
-        fg-col-grid(10)
-    .fg__pad-9
-      if dir == 1
-        fg-row-grid(9)
-      else
-        fg-col-grid(9)
-    .fg__pad-8
-      if dir == 1
-        fg-row-grid(8)
-      else
-        fg-col-grid(8)
-    .fg__pad-7
-      if dir == 1
-        fg-row-grid(7)
-      else
-        fg-col-grid(7)
-    .fg__pad-6
-      if dir == 1
-        fg-row-grid(6)
-      else
-        fg-col-grid(6)
-    .fg__pad-5
-      if dir == 1
-        fg-row-grid(5)
-      else
-        fg-col-grid(5)
-    .fg__pad-4
-      if dir == 1
-        fg-row-grid(4)
-      else
-        fg-col-grid(4)
-    .fg__pad-3
-      if dir == 1
-        fg-row-grid(3)
-      else
-        fg-col-grid(3)
-    .fg__pad-2
-      if dir == 1
-        fg-row-grid(2)
-      else
-        fg-col-grid(2)
-    .fg__pad-1
-      if dir == 1
-        fg-row-grid(1)
-      else
-        fg-col-grid(1)
-
-  .fg-row,
   .fg__pad-row
-    fg-row(0)
-    &>
-      fgDirPad(1)
-  .fg-col,
+    fg-row(null)
   .fg__pad-col
-    fg-col(0)
-    &>
-      fgDirPad(0)
-  .fg-row--r,
+    fg-col(null)
   .fg__pad-row--r
     fg-row(r)
-    &>
-      fgDirPad(1)
-  .fg-col--r,
   .fg__pad-col--r
     fg-col(r)
-    &>
-      fgDirPad(0)
+
+  .fg__pad-wrap--no
+    fg-wrap(no)
+  .fg__pad-wrap--r
+    fg-wrap(r)
+  .fg__pad-wrap
+    fg-wrap(null)
+    
+  .fg__pad-auto
+    fg-auto()
+  .fg__pad-full
+    fg-full()
+
+  .fg__pad-24
+    fg-grid(24)
+  .fg__pad-23
+    fg-grid(23)
+  .fg__pad-22
+    fg-grid(22)
+  .fg__pad-21
+    fg-grid(21)
+  .fg__pad-20
+    fg-grid(20)
+  .fg__pad-19
+    fg-grid(19)
+  .fg__pad-18
+    fg-grid(18)
+  .fg__pad-17
+    fg-grid(17)
+  .fg__pad-17
+    fg-grid(17)
+  .fg__pad-16
+    fg-grid(16)
+  .fg__pad-15
+    fg-grid(15)
+  .fg__pad-14
+    fg-grid(14)
+  .fg__pad-13
+    fg-grid(13)
+  .fg__pad-12
+    fg-grid(12)
+  .fg__pad-11
+    fg-grid(11)
+  .fg__pad-10
+    fg-grid(10)
+  .fg__pad-9
+    fg-grid(9)
+  .fg__pad-8
+    fg-grid(8)
+  .fg__pad-7
+    fg-grid(7)
+  .fg__pad-6
+    fg-grid(6)
+  .fg__pad-5
+    fg-grid(5)
+  .fg__pad-4
+    fg-grid(4)
+  .fg__pad-3
+    fg-grid(3)
+  .fg__pad-2
+    fg-grid(2)
+  .fg__pad-1
+    fg-grid(1)
 
   .fg__pad-jc--sb
     fg-jc(sb)
@@ -169,10 +93,63 @@
     fg-ai(fe)
   .fg__pad-ai--st
     fg-ai(st)
-    
-  .fg__pad-wrap
-    fg-wrap(0)
-  .fg__pad-wrap--no
-    fg-wrap(no)
-  .fg__pad-wrap--r
-    fg-wrap(r)
+
+  .fg__pad-after-1
+    fg-order(1)
+  .fg__pad-before-1
+    fg-order(-1)
+  .fg__pad-after-0,
+  .fg__pad-before-0
+    fg-order(0)
+
+  /*** offset ***/
+  .fg__pad-offset-24
+    fg-offset(24)
+  .fg__pad-offset-23
+    fg-offset(23)
+  .fg__pad-offset-22
+    fg-offset(22)
+  .fg__pad-offset-21
+    fg-offset(21)
+  .fg__pad-offset-20
+    fg-offset(20)
+  .fg__pad-offset-19
+    fg-offset(19)
+  .fg__pad-offset-18
+    fg-offset(18)
+  .fg__pad-offset-17
+    fg-offset(17)
+  .fg__pad-offset-17
+    fg-offset(17)
+  .fg__pad-offset-16
+    fg-offset(16)
+  .fg__pad-offset-15
+    fg-offset(15)
+  .fg__pad-offset-14
+    fg-offset(14)
+  .fg__pad-offset-13
+    fg-offset(13)
+  .fg__pad-offset-12
+    fg-offset(12)
+  .fg__pad-offset-11
+    fg-offset(11)
+  .fg__pad-offset-10
+    fg-offset(10)
+  .fg__pad-offset-9
+     fg-offset(9)
+  .fg__pad-offset-8
+     fg-offset(8)
+  .fg__pad-offset-7
+     fg-offset(7)
+  .fg__pad-offset-6
+     fg-offset(6)
+  .fg__pad-offset-5
+     fg-offset(5)
+  .fg__pad-offset-4
+     fg-offset(4)
+  .fg__pad-offset-3
+     fg-offset(3)
+  .fg__pad-offset-2
+     fg-offset(2)
+  .fg__pad-offset-1
+     fg-offset(1)

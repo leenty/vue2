@@ -1,6 +1,6 @@
 <template lang="pug">
 .home
-  h1.l-ta--c Material Desgin
+  h1.u-ta--c Material Desgin
   p 添加touch
   p 用手机打开或者打开浏览器响应式设计模式
   p 右滑打开菜单，左滑关闭菜单

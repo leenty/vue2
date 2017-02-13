@@ -1,6 +1,6 @@
 <template lang="pug">
 .demo
-  h1.l-ta--c 以下部分皆为(呆萌)
+  h1.u-ta--c 以下部分皆为(呆萌)
   p
     router-link(:to="{name: 'DemoVuexState'}").u-link.l-pl10 vuexStateDemo
     router-link(:to="{name: 'FlexGrid'}").u-link.l-pl10 FlexGrid

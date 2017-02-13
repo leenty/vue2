@@ -1,156 +1,76 @@
 // mobile < 500px
 @media screen and (max-width: mobile)
-  fgDirMobile(dir)
-    .fg__mb-24
-      if dir == 1
-        fg-row-grid(24)
-      else
-        fg-col-grid(24)
-    .fg__mb-23
-      if dir == 1
-        fg-row-grid(23)
-      else
-        fg-col-grid(23)
-    .fg__mb-22
-      if dir == 1
-        fg-row-grid(22)
-      else
-        fg-col-grid(22)
-    .fg__mb-21
-      if dir == 1
-        fg-row-grid(21)
-      else
-        fg-col-grid(21)
-    .fg__mb-20
-      if dir == 1
-        fg-row-grid(20)
-      else
-        fg-col-grid(20)
-    .fg__mb-19
-      if dir == 1
-        fg-row-grid(19)
-      else
-        fg-col-grid(19)
-    .fg__mb-18
-      if dir == 1
-        fg-row-grid(18)
-      else
-        fg-col-grid(18)
-    .fg__mb-17
-      if dir == 1
-        fg-row-grid(17)
-      else
-        fg-col-grid(17)
-    .fg__mb-17
-      if dir == 1
-        fg-row-grid(17)
-      else
-        fg-col-grid(17)
-    .fg__mb-16
-      if dir == 1
-        fg-row-grid(16)
-      else
-        fg-col-grid(16)
-    .fg__mb-15
-      if dir == 1
-        fg-row-grid(15)
-      else
-        fg-col-grid(15)
-    .fg__mb-14
-      if dir == 1
-        fg-row-grid(14)
-      else
-        fg-col-grid(14)
-    .fg__mb-13
-      if dir == 1
-        fg-row-grid(13)
-      else
-        fg-col-grid(13)
-    .fg__mb-12
-      if dir == 1
-        fg-row-grid(12)
-      else
-        fg-col-grid(12)
-    .fg__mb-11
-      if dir == 1
-        fg-row-grid(11)
-      else
-        fg-col-grid(11)
-    .fg__mb-10
-      if dir == 1
-        fg-row-grid(10)
-      else
-        fg-col-grid(10)
-    .fg__mb-9
-      if dir == 1
-        fg-row-grid(9)
-      else
-        fg-col-grid(9)
-    .fg__mb-8
-      if dir == 1
-        fg-row-grid(8)
-      else
-        fg-col-grid(8)
-    .fg__mb-7
-      if dir == 1
-        fg-row-grid(7)
-      else
-        fg-col-grid(7)
-    .fg__mb-6
-      if dir == 1
-        fg-row-grid(6)
-      else
-        fg-col-grid(6)
-    .fg__mb-5
-      if dir == 1
-        fg-row-grid(5)
-      else
-        fg-col-grid(5)
-    .fg__mb-4
-      if dir == 1
-        fg-row-grid(4)
-      else
-        fg-col-grid(4)
-    .fg__mb-3
-      if dir == 1
-        fg-row-grid(3)
-      else
-        fg-col-grid(3)
-    .fg__mb-2
-      if dir == 1
-        fg-row-grid(2)
-      else
-        fg-col-grid(2)
-    .fg__mb-1
-      if dir == 1
-        fg-row-grid(1)
-      else
-        fg-col-grid(1)
-        
-  .fg-row,
-  .fg__pad-row,
   .fg__mb-row
-    fg-row(0)
-    &>
-      fgDirMobile(1)
-  .fg-col,
-  .fg__pad-col,
+    fg-row(null)
   .fg__mb-col
-    fg-col(0)
-    &>
-      fgDirMobile(0)
-  .fg-row--r,
-  .fg__pad-row--r,
+    fg-col(null)
   .fg__mb-row--r
     fg-row(r)
-    &>
-      fgDirMobile(1)
-  .fg-col--r,
-  .fg__pad-col--r,
   .fg__mb-col--r
     fg-col(r)
-    &>
-      fgDirMobile(0)
+
+  .fg__mb-wrap--no
+    fg-wrap(no)
+  .fg__mb-wrap--r
+    fg-wrap(r)
+  .fg__mb-wrap
+    fg-wrap(null)
+    
+  .fg__mb-auto
+    fg-auto()
+  .fg__mb-full
+    fg-full()
+
+  .fg__mb-24
+    fg-grid(24)
+  .fg__mb-23
+    fg-grid(23)
+  .fg__mb-22
+    fg-grid(22)
+  .fg__mb-21
+    fg-grid(21)
+  .fg__mb-20
+    fg-grid(20)
+  .fg__mb-19
+    fg-grid(19)
+  .fg__mb-18
+    fg-grid(18)
+  .fg__mb-17
+    fg-grid(17)
+  .fg__mb-17
+    fg-grid(17)
+  .fg__mb-16
+    fg-grid(16)
+  .fg__mb-15
+    fg-grid(15)
+  .fg__mb-14
+    fg-grid(14)
+  .fg__mb-13
+    fg-grid(13)
+  .fg__mb-12
+    fg-grid(12)
+  .fg__mb-11
+    fg-grid(11)
+  .fg__mb-10
+    fg-grid(10)
+  .fg__mb-9
+    fg-grid(9)
+  .fg__mb-8
+    fg-grid(8)
+  .fg__mb-7
+    fg-grid(7)
+  .fg__mb-6
+    fg-grid(6)
+  .fg__mb-5
+    fg-grid(5)
+  .fg__mb-4
+    fg-grid(4)
+  .fg__mb-3
+    fg-grid(3)
+  .fg__mb-2
+    fg-grid(2)
+  .fg__mb-1
+    fg-grid(1)
 
   .fg__mb-jc--sb
     fg-jc(sb)
@@ -173,10 +93,63 @@
     fg-ai(fe)
   .fg__mb-ai--st
     fg-ai(st)
-    
-  .fg__mb-wrap
-    fg-wrap(0)
-  .fg__mb-wrap--no
-    fg-wrap(no)
-  .fg__mb-wrap--r
-    fg-wrap(r)
+
+  .fg__mb-after-1
+    fg-order(1)
+  .fg__mb-before-1
+    fg-order(-1)
+  .fg__mb-after-0,
+  .fg__mb-before-0
+    fg-order(0)
+
+  /*** offset ***/
+  .fg__mb-offset-24
+    fg-offset(24)
+  .fg__mb-offset-23
+    fg-offset(23)
+  .fg__mb-offset-22
+    fg-offset(22)
+  .fg__mb-offset-21
+    fg-offset(21)
+  .fg__mb-offset-20
+    fg-offset(20)
+  .fg__mb-offset-19
+    fg-offset(19)
+  .fg__mb-offset-18
+    fg-offset(18)
+  .fg__mb-offset-17
+    fg-offset(17)
+  .fg__mb-offset-17
+    fg-offset(17)
+  .fg__mb-offset-16
+    fg-offset(16)
+  .fg__mb-offset-15
+    fg-offset(15)
+  .fg__mb-offset-14
+    fg-offset(14)
+  .fg__mb-offset-13
+    fg-offset(13)
+  .fg__mb-offset-12
+    fg-offset(12)
+  .fg__mb-offset-11
+    fg-offset(11)
+  .fg__mb-offset-10
+    fg-offset(10)
+  .fg__mb-offset-9
+     fg-offset(9)
+  .fg__mb-offset-8
+     fg-offset(8)
+  .fg__mb-offset-7
+     fg-offset(7)
+  .fg__mb-offset-6
+     fg-offset(6)
+  .fg__mb-offset-5
+     fg-offset(5)
+  .fg__mb-offset-4
+     fg-offset(4)
+  .fg__mb-offset-3
+     fg-offset(3)
+  .fg__mb-offset-2
+     fg-offset(2)
+  .fg__mb-offset-1
+     fg-offset(1)

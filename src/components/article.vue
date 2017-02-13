@@ -1,6 +1,6 @@
 <template lang="pug">
 .article
-  h1.l-ta--c 文章页面
+  h1.u-ta--c 文章页面
   .md-content
     router-view
 </template>

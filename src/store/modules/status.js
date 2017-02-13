@@ -34,6 +34,7 @@ const actions = {
     commit(types.ARTICLE_LIST)
   },
   pushScrollData ({ commit }) {
+    console.log('scroll！')
     commit(types.SCROLLDATA, getScrollData(), { silent: true })
   }
 }

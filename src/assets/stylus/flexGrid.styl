@@ -12,6 +12,21 @@ fg-col(v)
     flex-flow column-reverse wrap
   else
     flex-flow column wrap
+
+fg-wrap(v)
+  if v == 'no'
+    flex-wrap nowrap
+  else if v == 'r'
+    flex-wrap wrap-reverse
+  else
+    flex-wrap wrap
+
+fg-auto()
+  flex 0 0 auto
+fg-full()
+  flex 1 1 auto
+fg-grid(items)
+  flex-basis (items/24*100) %
   
 fg-jc(v)
   if v == 'sb'
@@ -37,29 +52,11 @@ fg-ai(v)
   if v == 'st'
     align-items stretch
 
-fg-wrap(v)
-  if v == 'no'
-    flex-wrap nowrap
-  else if v == 'r'
-    flex-wrap wrap-reverse
-  else
-    flex-wrap wrap
-
-fg-row-grid(items)
-  // width (items/24*100) %
-  flex-basis (items/24*100) %
-
-fg-col-grid(items)
-  // height (items/24*100) %
-  flex-basis (items/24*100) %
+fg-order(o)
+  order o
 
 fg-offset(items)
   margin-left (items/24*100) %
-
-fg-auto()
-  flex 0 0 auto
-fg-full()
-  flex 1 1 100%
 
 /*** grid ***/
 @import './flexGridNormal'

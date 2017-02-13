@@ -15,21 +15,31 @@
     &:not(:first-child)
       text-indent 1em
   pre
-    color #ccdce1
-    background-color #212e35
+    // color #ccdce1
+    // background-color #212e35
+    // border 1px solid #465d65
+    // border-radius 5px
+    color #525252
+    background-color #f8f8f8
     overflow auto
-    border 1px solid #465d65
     padding 25px 10px 15px
-    border-radius 5px
     position relative
-  code:before
+    font-size 13px
+    font-family 'Roboto Mono', Monaco, courier, monospace
+  code:before,
+  code:after
     position absolute
     top 5px
+    content attr(des)
     left 1em
-    content attr(class)
     display inline-block
-    color #4a626b
+    // color #4a626b
+    color #ccc
     font-size 12px
+  code:after
+    left initial
+    right 1em
+    content attr(class)
   .hljs-function
     color #a87fc6
   .hljs-built_in
@@ -48,8 +58,10 @@
     color #a6ce83
   .hljs-title
     color #6d94db
-  .hljs-comment
-    color #4a626b
+  .hljs-comment,
+  .md-comment
+    // color #4a626b
+    color #b3b3b3
     
   .hljs-selector-id
     color #a87fc6
