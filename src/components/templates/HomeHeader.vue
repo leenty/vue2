@@ -1,6 +1,6 @@
 <template lang="pug">
   header(
-    :class="{'header--scroll': isScrollDown}"
+    :class="{'header--scroll': navShrink}"
   ).header.u-clearfix
     .header__content(
       :style="trfFixedStyle",
@@ -41,27 +41,33 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      temp: 12,
-      author: 'leenty'
+      author: 'leenty',
+      navShrink: false
     }
   },
   computed: {
-    t () {
-      return this.temp ++
-    },
     // 这是新的getter获取方法，getter被预定义在store里
     ...mapGetters([
       'articleList'
     ]),
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
-      isScrollDown: ({status}) => status.scroll.scrollTop > 210,
+      scrollTop: ({status}) => status.scroll.scrollTop,
       trfFixedStyle: ({status}) => {
         return {
           'top': status.articleList ? `${status.scroll.scrollTop - 1}px` : '0px'
         }
       }
     })
+  },
+  watch: {
+    scrollTop (scrollTop) {
+      if (scrollTop > 210) {
+        this.navShrink = true
+      } else if (scrollTop < 50) {
+        this.navShrink = false
+      }
+    }
   },
   methods: {
     ...mapActions(['articleListSwitch'])

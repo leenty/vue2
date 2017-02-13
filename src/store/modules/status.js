@@ -9,7 +9,8 @@ const state = {
     scrollHeight: 0,
     windowHeight: 0,
     scrollBottom: 0
-  }
+  },
+  scrollDirection: 'up' // down | up
 }
 
 const getters = {
@@ -25,6 +26,8 @@ const mutations = {
     state.articleList = !state.articleList
   },
   [types.SCROLLDATA] (state, scrollObj) {
+    state.scrollDirection = scrollObj.scrollTop > state.scroll.scrollTop
+      ? 'down' : 'up'
     state.scroll = scrollObj
   }
 }
@@ -34,7 +37,7 @@ const actions = {
     commit(types.ARTICLE_LIST)
   },
   pushScrollData ({ commit }) {
-    console.log('scroll！')
+    // console.log('scroll！')
     commit(types.SCROLLDATA, getScrollData(), { silent: true })
   }
 }
