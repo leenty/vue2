@@ -26,7 +26,7 @@ fg-auto()
 fg-full()
   flex 1 1 auto
 fg-grid(items)
-  flex-basis (items/24*100) %
+  flex 0 1 (items/24*100) %
   
 fg-jc(v)
   if v == 'sb'
@@ -35,22 +35,22 @@ fg-jc(v)
     justify-content space-around
   if v == 'c'
     justify-content center
-  if v == 'fs'
-    justify-content flex-start
   if v == 'fe'
     justify-content flex-end
+  if v == 'fs'
+    justify-content flex-start
   
 fg-ai(v)
-  if v == 'c'
-    align-items center
-  if v == 'bl'
-    align-items baseline
-  if v == 'fs'
-    align-items flex-start
-  if v == 'fe'
-    align-items flex-end
   if v == 'st'
     align-items stretch
+  if v == 'bl'
+    align-items baseline
+  if v == 'c'
+    align-items center
+  if v == 'fe'
+    align-items flex-end
+  if v == 'fs'
+    align-items flex-start
 
 fg-order(o)
   order o

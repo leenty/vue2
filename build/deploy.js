@@ -27,16 +27,6 @@ Date.prototype.format = function(fmt) {
 
 const commitTime = new Date()
 const commitName = `deploy at ${commitTime.format("yyyy-MM-dd hh:mm:ss")}`
-// console.log(argv)
-// cd('.deploy')
-// let test = exec('git status')
-// console.log(test)
-
-const asynExec = function (...args) {
-  console.log(...args)
-}
-
-asynExec(1,2,3)
 
 const setDeploy = function () {
   let dir = '.deploy'
@@ -44,30 +34,25 @@ const setDeploy = function () {
   spinner.start()
 
   rm('-rf', `${dir}/*`)
-  cp('-R', ['dist/CNAME', 'dist/index.html', 'dist/static', 'dist/article', 'dist/demo', dir])
+  cp('-R', ['dist/*', dir])
   cd(dir)
-  // exec('git add .')
-  // exec(`git cm -m "deploy at ${commitName}"`)
-  cd('..')
-  deploy()
+  exec('git add .')
+  exec(`git cm -m "deploy at ${commitName}"`)
+  pushDeploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
+  pushDeploy('gh-pages', 'git@github.com:leenty/vue2.git')
+
+  // cd('..')
+  // deploy()
 
   spinner.stop()
   console.log('\n')
 }
-// setDeploy()
+setDeploy()
 
-// const pushDeploy = function (branch, repository) {
-//   exec(`git push -u ${repository} HEAD:${branch} --force`)
-// }
+function pushDeploy(branch, repository) {
+  exec(`git push -u ${repository} HEAD:${branch} --force`)
+}
 
-// cd('.deploy')
-// exec('git status', {silent:true}, (code, stdout, stderr) => {
-//   console.log(code)
-//   console.log(stdout)
-//   console.log(stderr)
-// })
-
-// deploy()
 function deploy() {
   let repo, index, oid, remote
   const relativePath = '../.deploy/'
@@ -91,16 +76,6 @@ function deploy() {
             .then(commitId => console.log(`\ncommitInfo:\n--commitId:   ${commitId}\n--commitName: ${commitName}`))
         })
       }
-        // if (argv._.length > 0) {
-        //   argv._.forEach(k => pushDeploy(repos[k].branch, repos[k].repo))
-        // } else {
-        //   for (let k in repos) {
-        //     pushDeploy(repos[k].branch, repos[k].repo)
-        //   }
-        // }
-        // console.log(statuses, 'test')
-        // console.log(git.Remote)
-        // console.log(git.Remote.list().then(console.log))
     })
     .then(() => git.Remote.delete(repo, 'origin'))
     .then(() => git.Remote.create(repo, 'origin', 'git@git.coding.net:leenty/vue2.leenty.com.git'))
@@ -120,12 +95,5 @@ function deploy() {
     .then(done => console.log('done! \n', done))
     .catch(err => console.log('error! \n', err))
 }
-// git push -u git@git.coding.net:leenty/vue2.leenty.com.git HEAD:master --force
 
-// if (argv._.length > 0) {
-//   argv._.forEach(k => pushDeploy(repos[k].branch, repos[k].repo))
-// } else {
-//   for (let k in repos) {
-//     pushDeploy(repos[k].branch, repos[k].repo)
-//   }
-// }
+// git push -u git@git.coding.net:leenty/vue2.leenty.com.git HEAD:master --force
