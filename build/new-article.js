@@ -72,32 +72,20 @@ const checkArg = function () {
       arg: arg.render ? arg.render : arg.r
     }
   }
-  console.log(`npm run article -- --new 'fileName'  |  new article\n`
-    +         `npm run article -- -n 'fileName'     |  --new alias\n`
-    +         `npm run article -- --render          |  render router\n`
-    +         `npm run article -- -r                |  --render alias\n`
-    +         `npm run article -- --help            |  help\n`
-    +         `npm run article -- -h                |  --help alias\n`);
+  console.log(`Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]\n`
+    +`or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]\n\n`
+    +         `-n, --new 'fileName'  |  new article    新建文章\n`
+    +         `-r, --render          |  render router  渲染路由\n`
+    +         `-h, --help            |  help           帮助\n`);
   return false
 }
 
 ;(function () {
   let argObj = checkArg()
   argObj &&
-    (argObj.type === 'new'
-      ? createArticle(argObj.arg).then(done => {
-          console.log(done)
-          return router.createRouter()
-        }).catch(console.log)
-      : router.createRouter())
+    argObj.type === 'new' && createArticle(argObj.arg)
+      .then(done => router.createRouter())
+      .catch(console.log) ||
+    argObj.type === 'render' && router.createRouter()
 })()
 
-// var temp = require('../src/articles.json')
-// console.log(temp, typeof temp)
-// fs.readFile(path.join(__dirname, '../src/articles.js'), (err, data) => {
-//   if (err)
-//     return console.log(err)
-//   console.log('成功！')
-//   console.log(data.toString())wwww
-//   console.log(data[0].name)
-// })

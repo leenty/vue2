@@ -3,6 +3,16 @@
 使用 Material 风格
 后面会加入大量微动效
 
+# 新建文章及路由生成
+```
+   Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]
+   or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]
+
+      -n, --new 'fileName'  |  new article    新建文章
+      -r, --render          |  render router  渲染路由
+      -h, --help            |  help           帮助
+```
+
 # 当前css规则
 ```
 css命名使用 BEM+emmet 风格作为命名规范
