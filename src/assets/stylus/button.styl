@@ -8,7 +8,9 @@ button
   cursor pointer
   vertical-align -30%
 
-.b-menu
+.b-menu,
+.b-close,
+.b-top
   width 25px
   height 25px
   position relative
@@ -25,16 +27,30 @@ button
     border-radius 3px
     transition all .5s cb-duang
     transform-origin 50% 50%
+  
+.b-menu
   &:before
     transform translateY(-6px)
   &:after
     box-shadow 0 6px 0 0 #fff
-.b-menu--Active
+.b-close
   &:before
     transform rotateZ(45deg) translateY(0)
   &:after
     box-shadow 0 0 0 0 #fff
     transform rotateZ(135deg) translateY(0)
+.b-top
+  &:before,
+  &:after
+    transform-origin 50% 50%
+    top 15%
+    left 15%
+    width 70%
+  &:before
+    transform rotateZ(135deg) translate(50%, -25%)
+  &:after
+    box-shadow 0 0 0 0 #fff
+    transform rotateZ(45deg) translate(50%, 25%)
     
 .b-svgBtn
   padding 5px

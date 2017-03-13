@@ -1,5 +1,5 @@
 <template lang="pug">
-  .articleList(:class="{'articleList--Active': articleList}").l-page--Full
+  .articleList(:class="{'articleList--Active': sideBar}").l-page--Full
     //- .articleList__nav
       .articleList__title
         svg.svg__code
@@ -16,7 +16,7 @@
     ul.articleList__content.u-ul--Reset
       li(
         v-for="(item, index) in list",
-        @click="articleListSwitch",
+        @click="sideBarSwitch",
         :style="calcDelay(index)"
       ).articleList__li
         router-link(
@@ -38,14 +38,14 @@ export default {
       list
     }
   },
-  computed: mapGetters(['articleList']),
+  computed: mapGetters(['sideBar']),
   methods: {
     calcDelay: function (index) {
       return {
         'transitionDelay': `.${index + 2}s`
       }
     },
-    ...mapActions(['articleListSwitch'])
+    ...mapActions(['sideBarSwitch'])
   }
 }
 </script>
@@ -55,12 +55,12 @@ export default {
   .articleList
     background-color c-master
   .articleList__content
-    width s-articleList
+    width s-sideBar
     margin-top 8vh
     max-height 84vh
     color #fff
   .articleList__li
-    transform translateX(-(s-articleList))
+    transform translateX(-(s-sideBar))
     transition transform .3s cb-duang .2s
   .articleList__link
     width 100%

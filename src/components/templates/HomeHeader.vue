@@ -6,11 +6,7 @@
       :style="trfFixedStyle",
       :data-author="author"
     )
-      .header__listSwitch
-        button(
-          @click="articleListSwitch",
-          :class="{'b-menu--Active': articleList}"
-        ).header__switch.b-menu
+      main-button
       .header__menu.u-boxShadow.l-flexH--sa
         router-link(to="/", exact).u-link__inherit.header__link.l-flexV--c
           svg.svg__home
@@ -37,40 +33,31 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+import MainButton from './MainButton'
 export default {
   data () {
     return {
-      author: 'leenty',
-      navShrink: false
+      author: 'leenty'
     }
+  },
+  components: {
+    MainButton
   },
   computed: {
     // 这是新的getter获取方法，getter被预定义在store里
     ...mapGetters([
-      'articleList'
+      'sideBar',
+      'navShrink'
     ]),
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
-      scrollTop: ({status}) => status.scroll.scrollTop,
       trfFixedStyle: ({status}) => {
         return {
-          'top': status.articleList ? `${status.scroll.scrollTop - 1}px` : '0px'
+          'top': status.sideBar ? `${status.scroll.scrollTop - 1}px` : '0px'
         }
       }
     })
-  },
-  watch: {
-    scrollTop (scrollTop) {
-      if (scrollTop > 210) {
-        this.navShrink = true
-      } else if (scrollTop < 50) {
-        this.navShrink = false
-      }
-    }
-  },
-  methods: {
-    ...mapActions(['articleListSwitch'])
   }
 }
 </script>
@@ -116,17 +103,6 @@ export default {
   .header__link
     width 80px
     height @width
-    // transition all .5s cb-duang
-    // transition-property width 
-  .header__listSwitch
-    position absolute
-    left 10px
-    top 10px
-    height 25px
-    transition all .5s cb-duang
-    // box-sizing border-box
-  .header__switch
-    z-index 10
   .header--scroll
     height menuMinHeight
     margin-bottom 20px
@@ -144,12 +120,4 @@ export default {
       height @width
     .u-link--Active
       color #fff
-    .header__listSwitch
-      top 85vh
-      left 5vw
-      background-color c-master
-      padding 10px
-      border-radius 50%
-      box-shadow 0px 2px 5px 0px rgba(0,0,0,0.3)
-      opacity .7
 </style>

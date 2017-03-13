@@ -2,7 +2,7 @@
   .app.u-clearfix
     app-article-list
     .app__content(
-      :class="{'app__content--Active': articleList}",
+      :class="{'app__content--Active': sideBar}",
       v-finger:swipe="swipeRight",
       @scroll="pushScrollData"
     ).l-page--Full
@@ -32,16 +32,16 @@
       AppArticleList
     },
     computed: mapGetters([
-      'articleList'
+      'sideBar'
     ]),
     methods: {
       ...mapActions([
         'pushScrollData',
-        'articleListSwitch'
+        'sideBarSwitch'
       ]),
       swipeRight: function (e) {
-        e.direction === 'Right' && !this.articleList && this.articleListSwitch()
-        e.direction === 'Left' && this.articleList && this.articleListSwitch()
+        e.direction === 'Right' && !this.sideBar && this.sideBarSwitch()
+        e.direction === 'Left' && this.sideBar && this.sideBarSwitch()
       }
     }
   }
@@ -56,9 +56,9 @@
     transition transform .5s
     box-shadow 0 0 100px 5px rgba(0,0,0,0.3)
     background-color c-bgc
-    transform-origin s-articleList center
+    transform-origin s-sideBar center
   .app__content--Active
-    transform scale(.9) translateX(s-articleList)
+    transform scale(.9) translateX(s-sideBar)
   .app__bodyer
     max-width max-width
     background-color c-bgc
