@@ -36,8 +36,8 @@
     methods: {
       ...mapActions(['sideBarSwitch', 'scollTop']),
       switchMethods () {
-        (this.menu || this.sideBar) && this.sideBarSwitch()
-        this.top && this.scollTop()
+        !this.sideBar && this.top && this.scollTop()
+        ;(this.menu || this.sideBar) && this.sideBarSwitch()
       }
     }
   }
