@@ -11,7 +11,8 @@ const state = {
     scrollBottom: 0
   },
   scrollDirection: true, // down: true | up: false
-  navShrink: false
+  navShrink: false,
+  appReady: true
 }
 
 const getters = {
@@ -21,7 +22,8 @@ const getters = {
   // 所以可以放心的用state
   sideBar: state => state.sideBar,
   scrollDirection: state => state.scrollDirection,
-  navShrink: state => state.navShrink
+  navShrink: state => state.navShrink,
+  appReady: state => state.appReady
 }
 
 const mutations = {
@@ -39,6 +41,10 @@ const mutations = {
   },
   [types.SCROLLTOP] () {
     document.querySelector('.app__content').scrollTop = 0
+  },
+  [types.APPREADY] (state, bool) {
+    console.log('types.APPREADY', bool)
+    state.appReady = bool
   }
 }
 
@@ -47,11 +53,13 @@ const actions = {
     commit(types.ARTICLE_LIST)
   },
   pushScrollData ({ commit }) {
-    // console.log('scroll！')
     commit(types.SCROLLDATA, getScrollData(), { silent: true })
   },
   scollTop ({ commit }) {
     commit(types.SCROLLTOP)
+  },
+  updateAppStatus ({ commit }, status) {
+    commit(types.APPREADY, status)
   }
 }
 

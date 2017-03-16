@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import store from './store'
 
 const title = 'leenty blog Demo'
 
@@ -28,7 +29,12 @@ router.beforeEach((to, from, next) => {
   }
   titleStr += title
   document.title = titleStr
+  store.dispatch('updateAppStatus', false)
   next()
+})
+
+router.afterEach((route) => {
+  store.dispatch('updateAppStatus', true)
 })
 
 export default router
