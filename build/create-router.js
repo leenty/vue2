@@ -4,7 +4,7 @@ var fs = require("fs")
 const relativePath = '../src/md/articles/'
 
 const replaceArticleName = function (articleName) {
-  return articleName.replace(' ', '_').replace('-', '_')
+  return articleName.replace(' ', '_')
 }
 
 const getArticleList = function () {
@@ -86,12 +86,12 @@ const createArticleList = function (infoArr) {
 
 const createPreRender = function (infoArr) {
   let prm = new Promise((resolve, reject) => {
-    let preRenderArr = 'const preRenderArr = ['
+    let preRenderArr = 'var preRenderArr = ['
     infoArr.forEach((v, k) => {
       let articleName = replaceArticleName(v.fileName)
       preRenderArr += `${k ? ', ' : ''}'/${v.date}/${articleName}'`
     })
-    preRenderArr += `]\n export default preRenderArr`
+    preRenderArr += `]\nmodule.exports = preRenderArr`
     fs.writeFile(path.join(__dirname, `../src/articlesPreRender.js`), preRenderArr, err => {
       err && reject(err)
       resolve('\n预渲染路由生成完毕！')
