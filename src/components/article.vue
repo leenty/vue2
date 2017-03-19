@@ -6,14 +6,11 @@
   .duo-shuo
     duo-shuo(
       domain="leenty-blog",
-      :thread="$route.name",
-      author="leenty-blog",
-      v-if="appReady"
+      :thread="$route.name"
     )
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   import DuoShuo from 'vue-duoshuo'
   export default {
     data () {
@@ -22,8 +19,7 @@
     },
     components: {
       DuoShuo
-    },
-    computed: mapGetters(['appReady'])
+    }
   }
 </script>
 

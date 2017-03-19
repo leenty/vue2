@@ -43,7 +43,6 @@ const mutations = {
     document.querySelector('.app__content').scrollTop = 0
   },
   [types.APPREADY] (state, bool) {
-    console.log('types.APPREADY', bool)
     state.appReady = bool
   }
 }
