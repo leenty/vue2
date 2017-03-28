@@ -5,12 +5,13 @@
 
 # 新建文章及路由生成
 ```
-   Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]
+   Usage: npm run article -- [[-m] | [-n 'fileName'] | [-r] | [-h]]
    or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]
 
-      -n, --new 'fileName'  |  new article    新建文章
-      -r, --render          |  render router  渲染路由
-      -h, --help            |  help           帮助
+   -m, --mkdir           |  mkDir          初始化文章目录
+   -n, --new 'fileName'  |  new article    新建文章
+   -r, --render          |  render router  渲染路由
+   -h, --help            |  help           帮助
 ```
 
 # 当前css规则

@@ -29,6 +29,15 @@ Date.prototype.format = function(fmt) {
 var arg = require('minimist')(process.argv.slice(2))
 /***********************/
 
+const showHelp = function () {
+  console.log(`Usage: npm run article -- [[-m] | [-n 'fileName'] | [-r] | [-h]]\n`
+  +`or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]\n\n`
+  +         `-m, --mkdir           |  mkDir          初始化文章目录\n`
+  +         `-n, --new 'fileName'  |  new article    新建文章\n`
+  +         `-r, --render          |  render router  渲染路由\n`
+  +         `-h, --help            |  help           帮助\n`)
+}
+
 const setAritcleInfo = function (name) {
   const date = new Date().format("yyyy/MM/dd")
   return '<!--{'
@@ -51,12 +60,23 @@ const createArticle = function (name) {
     } else {
       const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
       fs.writeFile(articlePath, setAritcleInfo(name), err => {
-        err && reject(err)
+        err && reject('找不到文章路径，请使用‘npm run article -- -m’来创建路径\n')
         resolve(`新建文章${name}\n路径: ${articlePath}`)
       })
     }
   })
   return prm
+}
+
+const mkDir = function () {
+  fs.mkdir(path.join(__dirname,'../src/md/articles'), function (err, files) {
+    if (err) {
+      console.log('"src/md/articles"目录已存在，无需创建！\n\n')
+    } else {
+      console.log('"src/md/articles"目录创建成功！\n\n')
+    }
+    showHelp()
+  })
 }
 
 const checkArg = function () {
@@ -69,20 +89,23 @@ const checkArg = function () {
   if (arg.r || arg.render) {
     return {
       type: 'render',
-      arg: arg.render ? arg.render : arg.r
+      arg: null
     }
   }
-  console.log(`Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]\n`
-    +`or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]\n\n`
-    +         `-n, --new 'fileName'  |  new article    新建文章\n`
-    +         `-r, --render          |  render router  渲染路由\n`
-    +         `-h, --help            |  help           帮助\n`);
+  if (arg.m || arg.mkdir) {
+    return {
+      type: 'mkdir',
+      arg: null
+    }
+  }
+  showHelp()
   return false
 }
 
 ;(function () {
   let argObj = checkArg()
   argObj &&
+    argObj.type === 'mkdir' && mkDir() ||
     argObj.type === 'new' && createArticle(argObj.arg)
       .then(done => router.createRouter())
       .catch(console.log) ||

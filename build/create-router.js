@@ -10,7 +10,7 @@ const replaceArticleName = function (articleName) {
 const getArticleList = function () {
   let prm = new Promise((resolve, reject) => {
     fs.readdir(path.join(__dirname, relativePath), function(err, files){
-      err && reject(err)
+      err && reject('找不到文章路径，请使用‘npm run article -- -m’来创建路径\n')
       resolve(files.filter(v => v.slice(-3) === '.md'))
     })
   })
@@ -106,7 +106,8 @@ exports.createPreRender = createPreRender
 
 exports.createRouter = function () {
   getArticleList()
-    .then(getArticleInfo, console.log)
-    .then(generateRouter, console.log)
-    .then(log => console.log(...log), console.log)
+    .then(getArticleInfo)
+    .then(generateRouter)
+    .then(logs => console.log(...logs))
+    .catch(console.log)
 }
