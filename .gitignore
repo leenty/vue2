@@ -7,4 +7,9 @@ test/e2e/reports
 selenium-debug.log
 .deploy
 .deploy_coding
+
+# 文章
 src/md/articles/
+src/articlesPreRender.js
+src/articleList.json
+src/articlesRoutes.js

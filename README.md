@@ -3,6 +3,28 @@
 使用 Material 风格
 后面会加入大量微动效
 
+# 安装
+克隆仓库到本地
+```
+git clone git@github.com:leenty/vue2.git
+```
+安装依赖
+```
+npm i
+```
+生成文章路径
+```
+npm run article -- -m
+```
+生成文章
+```
+npm run article -- -n 'demo'
+```
+在文章生成后，运行以下代码以生成文章路由
+```
+npm run article -- -m
+```
+
 # 新建文章及路由生成
 ```
    Usage: npm run article -- [[-m] | [-n 'fileName'] | [-r] | [-h]]
