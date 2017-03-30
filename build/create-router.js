@@ -3,21 +3,20 @@ var fs = require("fs")
 
 const relativePath = '../src/md/articles/'
 
-const replaceArticleName = function (articleName) {
+function replaceArticleName (articleName) {
   return articleName.replace(' ', '_')
 }
 
-const getArticleList = function () {
-  let prm = new Promise((resolve, reject) => {
+function getArticleList () {
+  return new Promise((resolve, reject) => {
     fs.readdir(path.join(__dirname, relativePath), function(err, files){
-      err && reject('找不到文章路径，请使用‘npm run article -- -m’来创建路径\n')
+      err && reject(err)
       resolve(files.filter(v => v.slice(-3) === '.md'))
     })
   })
-  return prm
 }
 
-const getArticleInfo = function (name) {
+function getArticleInfo (name) {
   let prmArr = []
   name.forEach(v => {
     prmArr.push(new Promise((resolve, reject) => {
@@ -32,8 +31,8 @@ const getArticleInfo = function (name) {
   return Promise.all(prmArr)
 }
 
-const createRoutes = function (infoArr) {
-  let prm = new Promise((resolve, reject) => {
+function createRoutes (infoArr) {
+  return new Promise((resolve, reject) => {
     let routesStr = 'const articlesRouter = ['
     infoArr.forEach((v, k) => {
       let articleName = replaceArticleName(v.fileName)
@@ -50,21 +49,20 @@ const createRoutes = function (infoArr) {
       resolve('\n路由生成完毕！')
     })
   })
-  return prm
 }
 
-const generateRouter = function (infoArr) {
-  let prmArr = []
-  prmArr.push(createRoutes(infoArr))
-  prmArr.push(createArticleList(infoArr))
-  prmArr.push(createPreRender(infoArr))
-  return Promise.all(prmArr)
+async function generateRouter (infoArr) {
+  let resultArr = []
+  resultArr.push(await createRoutes(infoArr))
+  resultArr.push(await createArticleList(infoArr))
+  resultArr.push(await createPreRender(infoArr))
+  return resultArr
 }
 
 /*****************************/
 
-const createArticleList = function (infoArr) {
-  let prm = new Promise((resolve, reject) => {
+function createArticleList (infoArr) {
+  return new Promise((resolve, reject) => {
     let routesStr = '['
     infoArr.forEach((v, k) => {
       let articleName = replaceArticleName(v.fileName)
@@ -79,13 +77,12 @@ const createArticleList = function (infoArr) {
       resolve('\n文章列表生成完毕！')
     })
   })
-  return prm
 }
 
 /*******************************/
 
-const createPreRender = function (infoArr) {
-  let prm = new Promise((resolve, reject) => {
+function createPreRender (infoArr) {
+  return new Promise((resolve, reject) => {
     let preRenderArr = 'var preRenderArr = ['
     infoArr.forEach((v, k) => {
       let articleName = replaceArticleName(v.fileName)
@@ -97,17 +94,14 @@ const createPreRender = function (infoArr) {
       resolve('\n预渲染路由生成完毕！')
     })
   })
-  return prm
 }
 
 exports.createArticleList = createArticleList
 
 exports.createPreRender = createPreRender
 
-exports.createRouter = function () {
-  getArticleList()
-    .then(getArticleInfo)
-    .then(generateRouter)
-    .then(logs => console.log(...logs))
-    .catch(console.log)
+exports.createRouter = async function () {
+  const articleList = await getArticleList()
+  const articleInfo = await getArticleInfo(articleList)
+  return await generateRouter(articleInfo)
 }

@@ -65,6 +65,7 @@
     "karma-webpack": "^1.7.0",
     "lolex": "^1.4.0",
     "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",
     "nodegit": "^0.16.0",

@@ -3,6 +3,7 @@
 var path = require('path')
 var fs = require("fs")
 var router = require("./create-router")
+var mkdirp = require('mkdirp')
 
 const relativePath = '../src/md/articles/'
 
@@ -29,16 +30,15 @@ Date.prototype.format = function(fmt) {
 var arg = require('minimist')(process.argv.slice(2))
 /***********************/
 
-const showHelp = function () {
-  console.log(`Usage: npm run article -- [[-m] | [-n 'fileName'] | [-r] | [-h]]\n`
-  +`or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]\n\n`
-  +         `-m, --mkdir           |  mkDir          初始化文章目录\n`
+function getHelp () {
+  return `Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]\n`
+  +      `or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]\n\n`
   +         `-n, --new 'fileName'  |  new article    新建文章\n`
   +         `-r, --render          |  render router  渲染路由\n`
-  +         `-h, --help            |  help           帮助\n`)
+  +         `-h, --help            |  help           帮助\n`
 }
 
-const setAritcleInfo = function (name) {
+function setAritcleInfo (name) {
   const date = new Date().format("yyyy/MM/dd")
   return '<!--{'
     +       `\n"title": "${name}",`
@@ -48,38 +48,46 @@ const setAritcleInfo = function (name) {
     +    '\n}-->\n'
 }
 
-const createArticle = function (name) {
-  let prm = new Promise((resolve, reject) => {
-    if (!name || name == 0) {
+function writeArticle (name) {
+  return new Promise((resolve, reject) => {
+    if (typeof name === 'string' || typeof name === 'number') {
+      const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
+      fs.stat(articlePath, (err, stat) => {
+        err || reject(`${articlePath} 已存在！`)
+        fs.writeFile(articlePath, setAritcleInfo(name), err => {
+          err && reject(err)
+          resolve(`新建文章《${name}》\n路径: ${articlePath}`)
+        })
+      })
+    } else {
       reject(
         `错误的文件名 ${name}` +
         `\n请使用：` +
         `\n    npm run article -- --new 'fileName'` +
         `创建文章`
       )
-    } else {
-      const articlePath = path.join(__dirname, `${relativePath}${name}.md`)
-      fs.writeFile(articlePath, setAritcleInfo(name), err => {
-        err && reject('找不到文章路径，请使用‘npm run article -- -m’来创建路径\n')
-        resolve(`新建文章${name}\n路径: ${articlePath}`)
-      })
     }
-  })
-  return prm
-}
-
-const mkDir = function () {
-  fs.mkdir(path.join(__dirname,'../src/md/articles'), function (err, files) {
-    if (err) {
-      console.log('"src/md/articles"目录已存在，无需创建！\n\n')
-    } else {
-      console.log('"src/md/articles"目录创建成功！\n\n')
-    }
-    showHelp()
   })
 }
 
-const checkArg = function () {
+async function createArticle(arg) {
+  let resultArr = []
+  await mkDir()
+  resultArr.push(await writeArticle(arg))
+  resultArr.push(...await router.createRouter())
+  return resultArr
+}
+
+function mkDir () {
+  return new Promise((resolve, reject) => {
+    mkdirp(path.join(__dirname,'../src/md/articles'), err => {
+      err && reject('"创建目录异常！\n', err)
+      resolve()
+    })
+  })
+}
+
+function checkArg () {
   if (arg.n || arg.new) {
     return {
       type: 'new',
@@ -92,23 +100,20 @@ const checkArg = function () {
       arg: null
     }
   }
-  if (arg.m || arg.mkdir) {
-    return {
-      type: 'mkdir',
-      arg: null
-    }
-  }
-  showHelp()
   return false
 }
 
 ;(function () {
   let argObj = checkArg()
-  argObj &&
-    argObj.type === 'mkdir' && mkDir() ||
-    argObj.type === 'new' && createArticle(argObj.arg)
-      .then(done => router.createRouter())
-      .catch(console.log) ||
-    argObj.type === 'render' && router.createRouter()
+  if (argObj) {
+    if (argObj.type === 'new')
+      return createArticle(argObj.arg)
+    if (argObj.type === 'render')
+      return router.createRouter()
+  } else {
+    return Promise.reject(getHelp())
+  }
 })()
+  .then(logs => console.log(...logs))
+  .catch(console.log)
 

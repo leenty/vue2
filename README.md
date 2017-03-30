@@ -12,25 +12,20 @@ git clone git@github.com:leenty/vue2.git
 ```
 npm i
 ```
-生成文章路径
-```
-npm run article -- -m
-```
 生成文章
 ```
 npm run article -- -n 'demo'
 ```
-在文章生成后，运行以下代码以生成文章路由
+生成文章路由
 ```
-npm run article -- -m
+npm run article -- -r
 ```
 
 # 新建文章及路由生成
 ```
-   Usage: npm run article -- [[-m] | [-n 'fileName'] | [-r] | [-h]]
+   Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]
    or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]
 
-   -m, --mkdir           |  mkDir          初始化文章目录
    -n, --new 'fileName'  |  new article    新建文章
    -r, --render          |  render router  渲染路由
    -h, --help            |  help           帮助
