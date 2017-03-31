@@ -3,6 +3,9 @@
 使用 Material 风格
 后面会加入大量微动效
 
+# 环境
+nodejs >= v7.0 (当然，更新到最新也是极好的，可以享受最新功能)
+
 # 安装
 克隆仓库到本地
 ```
@@ -12,7 +15,7 @@ git clone git@github.com:leenty/vue2.git
 ```
 npm i
 ```
-生成文章
+创建文章并生成路由
 ```
 npm run article -- -n 'demo'
 ```

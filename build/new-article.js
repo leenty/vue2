@@ -17,9 +17,9 @@ Date.prototype.format = function(fmt) {
     "q+" : Math.floor((this.getMonth()+3)/3),
     "S"  : this.getMilliseconds()
   }
-  if(/(y+)/.test(fmt))   
+  if(/(y+)/.test(fmt))
     fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length))
-  for(let k in o)   
+  for(let k in o)
     if(new RegExp("("+ k +")").test(fmt))   
   fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1)
     ? (o[k])
@@ -72,7 +72,6 @@ function writeArticle (name) {
 
 async function createArticle(arg) {
   let resultArr = []
-  await mkDir()
   resultArr.push(await writeArticle(arg))
   resultArr.push(...await router.createRouter())
   return resultArr
@@ -103,13 +102,15 @@ function checkArg () {
   return false
 }
 
-;(function () {
+;(async function () {
   let argObj = checkArg()
   if (argObj) {
+    await mkDir()
     if (argObj.type === 'new')
       return createArticle(argObj.arg)
-    if (argObj.type === 'render')
+    if (argObj.type === 'render') {
       return router.createRouter()
+    }
   } else {
     return Promise.reject(getHelp())
   }
