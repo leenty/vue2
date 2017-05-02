@@ -96,6 +96,6 @@
     "npm": ">= 3.0.0"
   },
   "bin": {
-    "lee": "./bin/cli"
+    "lebo": "./bin/cli"
   }
 }
