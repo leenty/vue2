@@ -5,9 +5,9 @@
     .header__content(
       :style="trfFixedStyle",
       :data-author="author"
-    )
+    ).u-boxShadow
       main-button
-      .header__menu.u-boxShadow.l-flexH--sa
+      .header__menu.l-flexH--sa
         router-link(to="/", exact).u-link__inherit.header__link.l-flexV--c
           svg.svg__home
             use(xlink:href="#svg__home")
@@ -53,9 +53,15 @@ export default {
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
       trfFixedStyle: ({status}) => {
-        return {
-          'top': status.sideBar ? `${status.scroll.scrollTop - 1}px` : '0px'
-        }
+        return status.device.width < 768
+          ? {
+            'bottom': '0px'
+          }
+          : {
+            'top': status.sideBar
+              ? `${status.scroll.scrollTop - 3}px`
+              : '0px'
+          }
       }
     })
   }
@@ -65,8 +71,9 @@ export default {
 <style lang="stylus">
   @import '../../assets/stylus/preinstall'
   menuMargin = 90px
-  menuMinHeight = 50px
+  menuMinHeight = 70px
   menuMaxHeight = 120px
+  menuMinHeight__mb = 50px
   .header
     height 160px
     margin-bottom 60px
@@ -109,9 +116,7 @@ export default {
     .header__content:after
       bottom (menuMargin / 2 + menuMinHeight)
     .header__menu
-      // margin-top 45px
       margin-top 0
-      max-width 100%
       height menuMinHeight
       background-color transparent
     .header__link
@@ -120,4 +125,29 @@ export default {
       height @width
     .u-link--Active
       color #fff
+  @media screen and (max-width: pad)
+    .header
+      height 0
+      margin-bottom 0
+    .header__content
+      top initial
+      bottom 0
+      &:after
+        content ''
+    .header__menu
+      margin-top 0
+      height menuMinHeight__mb
+      background-color transparent
+    .header__link
+      color rgba(255,255,255,.6)
+      width menuMinHeight__mb
+      height @width
+      font-size 12px
+      svg
+        transform scale(.7)
+    .u-link--Active
+      color #fff
+    .header--scroll
+      .header__menu
+        height menuMinHeight__mb
 </style>

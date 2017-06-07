@@ -62,4 +62,15 @@
       border-radius 50%
       box-shadow 0px 2px 5px 0px rgba(0,0,0,0.3)
       opacity .7
+  @media screen and (max-width: pad)
+    .mainButton__menu,
+    .mainButton--fixed .mainButton__menu
+      top initial
+      bottom 10px
+      left 5px
+      transform scale(.8)
+      background-color c-master
+      border-radius 50%
+      box-shadow 0px 2px 5px 0px rgba(0,0,0,0.3)
+      opacity .7
 </style>

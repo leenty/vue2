@@ -78,10 +78,10 @@
     left 0
     opacity 1
   .slideFade-enter
-    transform translateX(100%) scale(.3)
+    transform translateX(100%)
     opacity 0
   .slideFade-leave-active
-    transform translateX(-100%) scale(.3)
+    transform translateX(-100%)
     opacity 0
     
 </style>

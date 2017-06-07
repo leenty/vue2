@@ -1,6 +1,7 @@
 import * as types from '../types'
 
-import getScrollData from '../../utils/scroll'
+import getScrollData from 'src/utils/scroll'
+import * as device from 'src/utils/device'
 
 const state = {
   sideBar: false,
@@ -12,7 +13,14 @@ const state = {
   },
   scrollDirection: true, // down: true | up: false
   navShrink: false,
-  appReady: true
+  appReady: true,
+  device: {
+    width: device.deviceWidth(),
+    height: device.deviceHeight(),
+    isPc: device.isPc(),
+    browserType: device.browserType(),
+    isWx: device.isWechatAgent
+  }
 }
 
 const getters = {
@@ -23,7 +31,8 @@ const getters = {
   sideBar: state => state.sideBar,
   scrollDirection: state => state.scrollDirection,
   navShrink: state => state.navShrink,
-  appReady: state => state.appReady
+  appReady: state => state.appReady,
+  device: state => state.device
 }
 
 const mutations = {
