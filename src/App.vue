@@ -70,6 +70,7 @@
   @media screen and (max-width: max-width)
     .app__bodyer
       padding 0 10px
+      margin-bottom 100px
     .slideFade-enter-active,
     .slideFade-leave-active
       left 10px
