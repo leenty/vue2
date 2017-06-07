@@ -53,6 +53,9 @@ const mutations = {
   },
   [types.APPREADY] (state, bool) {
     state.appReady = bool
+  },
+  [types.DEVICE] (state, device) {
+    state.device = device
   }
 }
 
@@ -68,6 +71,15 @@ const actions = {
   },
   updateAppStatus ({ commit }, status) {
     commit(types.APPREADY, status)
+  },
+  device ({ commit }) {
+    commit(types.DEVICE, {
+      width: device.deviceWidth(),
+      height: device.deviceHeight(),
+      isPc: device.isPc(),
+      browserType: device.browserType(),
+      isWx: device.isWechatAgent
+    })
   }
 }
 

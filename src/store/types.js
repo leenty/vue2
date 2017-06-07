@@ -3,6 +3,7 @@ export const ARTICLE_LIST_SWITCH = 'ARTICLE_LIST_SWITCH'
 export const SCROLLDATA = 'SCROLLDATA'
 export const SCROLLTOP = 'SCROLLTOP'
 export const APPREADY = 'APPREADY'
+export const DEVICE = 'DEVICE'
 
 // demo
 export const DEMO__VUEX_FOLLOW = 'DEMO__VUEX_FOLLOW'

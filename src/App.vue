@@ -16,10 +16,11 @@
 </template>
 
 <script>
+  import store from './store'
+  import { mapGetters, mapActions } from 'vuex'
+  import Loading from './components/feedback/Loading.vue'
   import HomeHeader from './components/templates/HomeHeader.vue'
   import AppArticleList from './components/templates/AppArticleList.vue'
-  import Loading from './components/feedback/Loading.vue'
-  import { mapGetters, mapActions } from 'vuex'
   // import fullScreen from './utils/fullScreen'
   export default {
     data () {
@@ -44,6 +45,9 @@
         e.direction === 'Left' && this.sideBar && this.sideBarSwitch()
       }
     }
+  }
+  window.onresize = function () {
+    store.dispatch('device')
   }
 </script>
 
