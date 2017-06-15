@@ -53,10 +53,14 @@ export default {
     // 这是直接获得state的数据，也就是相当于旧版本vuex的getter函数
     ...mapState({
       trfFixedStyle: ({status}) => {
+        // console.log(status.scroll.scrollTop + status.device.height - 50)
         return status.device.width < 768
-          ? {
-            'bottom': '0px'
-          }
+          ? status.sideBar
+            ? {
+              'position': 'absolute',
+              'top': `${status.device.height + status.scroll.scrollTop - 50}px`
+            }
+            : {'bottom': '0px'}
           : {
             'top': status.sideBar
               ? `${status.scroll.scrollTop - 3}px`
@@ -132,6 +136,7 @@ export default {
     .header__content
       top initial
       bottom 0
+      height 50px
       &:after
         content ''
     .header__menu
