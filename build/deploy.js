@@ -38,7 +38,7 @@ const setDeploy = function () {
   cd(dir)
   exec('git add .')
   exec(`git cm -m "deploy at ${commitName}"`)
-  pushDeploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
+  // pushDeploy('master', 'git@git.coding.net:leenty/vue2.leenty.com.git')
   pushDeploy('gh-pages', 'git@github.com:leenty/vue2.git')
 
   // cd('..')

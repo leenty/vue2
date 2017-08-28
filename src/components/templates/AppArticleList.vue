@@ -13,6 +13,7 @@
         svg.svg__code
           use(xlink:href="#svg__series")
         span series
+    slot
     ul.articleList__content.u-ul--Reset
       li(
         v-for="(item, index) in list",
@@ -54,9 +55,9 @@ export default {
   @import '../../assets/stylus/preinstall'
   .articleList
     background-color c-master
+    padding-top 8vh
   .articleList__content
     width s-sideBar
-    margin-top 8vh
     max-height 84vh
     color #fff
   .articleList__li

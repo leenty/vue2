@@ -38,7 +38,7 @@ import MainButton from './MainButton'
 export default {
   data () {
     return {
-      author: 'leenty'
+      author: 'leenty\'s blog'
     }
   },
   components: {

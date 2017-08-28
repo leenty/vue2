@@ -1,6 +1,7 @@
 <template lang="pug">
   .app.u-clearfix
     app-article-list
+      user
     .app__content(
       :class="{'app__content--Active': sideBar}",
       v-finger:swipe="swipeRight",
@@ -21,6 +22,7 @@
   import Loading from './components/feedback/Loading.vue'
   import HomeHeader from './components/templates/HomeHeader.vue'
   import AppArticleList from './components/templates/AppArticleList.vue'
+  import User from 'src/components/templates/User.vue'
   // import fullScreen from './utils/fullScreen'
   export default {
     data () {
@@ -28,6 +30,7 @@
       }
     },
     components: {
+      User,
       Loading,
       HomeHeader,
       AppArticleList
