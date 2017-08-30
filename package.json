@@ -68,7 +68,6 @@
     "mkdirp": "^0.5.1",
     "mocha": "^3.1.0",
     "nightwatch": "^0.9.8",
-    "nodegit": "^0.16.0",
     "opn": "^4.0.2",
     "ora": "^0.3.0",
     "phantomjs-prebuilt": "^2.1.3",
