@@ -15,23 +15,51 @@ git clone git@github.com:leenty/vue2.git
 ```
 npm i
 ```
-创建文章并生成路由
+安装[命令行工具`lebo`](https://github.com/leenty/lebo)
 ```
-npm run article -- -n 'demo'
+npm i -g lebo
 ```
-生成文章路由
+创建文章目录
 ```
-npm run article -- -r
+lebo article --mkdir
+# 简写
+lebo a -m
+```
+创建文章
+```
+lebo article --create 'demo'
+# 简写
+lebo a -c 'demo'
+```
+创建文章路由
+```
+lebo article --render
+# 简写
+lebo a -r
 ```
 
 # 新建文章及路由生成
 ```
-   Usage: npm run article -- [[-n 'fileName'] | [-r] | [-h]]
-   or: node build/new-article.js [[-n 'fileName'] | [-r] | [-h]]
+$ lebo -h
+  Usage: cli <command> [options]
 
-   -n, --new 'fileName'  |  new article    新建文章
-   -r, --render          |  render router  渲染路由
-   -h, --help            |  help           帮助
+  Options:
+    -V, --version  查看版本号
+    -h, --help     查看帮助
+
+  Commands:
+    article|a [options]   创建文章和创建文章路由
+    init|i <name>         创建项目(开发中)
+
+$ lebo article -h
+  Usage: article|a [options]
+  创建文章和创建文章路由
+
+  Options:
+    -r, --render            生成文章路由
+    -c, --create <article>  生成名为<article>的文章
+    -m, --mkdir             生成文章目录
+    -h, --help              查看帮助
 ```
 
 # 当前css规则
