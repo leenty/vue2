@@ -9,8 +9,7 @@
 </template>
 
 <script>
-  import { user } from 'src/resources/resource'
-  // import axios from 'axios'
+  import { userInfo } from 'src/resources/resource'
   export default {
     data () {
       return {
@@ -19,40 +18,11 @@
       }
     },
     created () {
-      // /* eslint-disable no-undef */
-      // const data = new FormData()
-      // data.append('name', 'leenty')
-      // data.append('password', '202cb962ac59075b964b07152d234b70')
-      user.post({
-        name: 'leenty',
-        password: '202cb962ac59075b964b07152d234b70'
+      userInfo.get({
+        id: 1
       }).then(data => {
-        // user.get()
+        console.log('test', data)
       })
-      // user1.get().then(data => {
-      //   console.log('test', data)
-      // })
-      // comment.get().then(data => {
-      //   console.log('test', data)
-      // })
-      // comment.post({
-      //   comment: '前端对接啦',
-      //   postTarget: 1
-      // }).then(data => {
-      //   console.log('test', data)
-      // })
-      // axios.post('http://localhost:8889/auth/user', {
-      //   name: 'leenty',
-      //   password: '202cb962ac59075b964b07152d234b70'
-      // }, {
-      //   headers: {
-      //     'Accept': 'application/json',
-      //     'Content-Type': 'Authorization',
-      //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibGVlbnR5IiwiaWQiOjEsImlhdCI6MTUxNDM2NjI5NCwiZXhwIjoxNTE0NDUyNjk0fQ.SaqEu45mLZtLIFOxzCT4E0nuhBhPA-Ss7b2FWHXjOdE'
-      //   }
-      // }).then(data => {
-      //   console.log('test', data)
-      // })
     }
   }
 </script>
