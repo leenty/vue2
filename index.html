@@ -33,5 +33,15 @@
     <div class="app"></div>
     <!-- <div id="uyan_frame"></div>
     <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2134903"></script> -->
+    <script>
+        if (location.hash === '#eruda') {
+            var s = document.createElement('script')
+            s.src="https://cdn.bootcss.com/eruda/1.2.6/eruda.min.js"
+            s.onload = function () {
+                eruda.init()
+            }
+            document.body.appendChild(s)
+        }
+    </script>
   </body>
 </html>
