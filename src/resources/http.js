@@ -2,7 +2,7 @@ import axios from 'axios'
 import auth from './auth'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8889/',
+  baseURL: 'http://192.168.141.17:8889/',
   // baseURL: 'http://api.leenty.com/'
   timeout: 1000
 })
@@ -30,10 +30,18 @@ const makeResource = function (url, baseData = {}) {
     return instance[methods](url, data)
   }
   return {
-    get: resuorce.bind(this, 'get'),
-    post: resuorce.bind(this, 'post'),
-    put: resuorce.bind(this, 'put'),
-    delete: resuorce.bind(this, 'delete')
+    get get () {
+      return resuorce.bind(this, 'get')
+    },
+    get post () {
+      return resuorce.bind(this, 'post')
+    },
+    get put () {
+      return resuorce.bind(this, 'put')
+    },
+    get delete () {
+      return resuorce.bind(this, 'delete')
+    }
   }
 }
 
