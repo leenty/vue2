@@ -25,7 +25,7 @@
     },
     filters: {
       formatDate: function (date) {
-        return (new Date(date)).toLocaleString().replace(/\//g, '-')
+        return (new Date(date)).toLocaleString().split(' ')[0].replace(/\//g, '-')
       }
     },
     // methods: {

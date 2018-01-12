@@ -11,7 +11,7 @@
         router-link(to="/", exact).u-link__inherit.header__link.l-flexV--c
           svg.svg__home
             use(xlink:href="#svg__home")
-          span home 
+          span home
         router-link(to="/article").u-link__inherit.header__link.l-flexV--c
           svg.svg__code
             use(xlink:href="#svg__code")

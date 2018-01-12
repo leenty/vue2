@@ -6,8 +6,13 @@ import router from './router'
 import store from './store'
 
 import App from './App.vue'
+import directives from './directives'
 import AlloyFingerVue from './services/alloy_finger'
 Vue.use(AlloyFingerVue)
+
+for (let key in directives) {
+  Vue.directive(key, directives[key])
+}
 
 /* eslint-disable no-new */
 new Vue({
@@ -18,4 +23,3 @@ new Vue({
 }).$mount('.app')
 
 console.log('\n %c leenty blog %c http://leenty.com \n\n', 'color: #fff; background: #1abc9c; padding:5px 0;border-radius: 5px 0 0 5px;', 'color: #34495e;background: #edeef0; padding:5px 0;border-radius: 0 5px 5px 0;text-decoration:none;')
-

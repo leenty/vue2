@@ -27,7 +27,7 @@
           .articleList__title
             svg.svg__home.u-va--tb
               use(xlink:href="#svg__articleIcon")
-            | {{item.title}} 
+            | {{item.title}}
 </template>
 
 <script>
@@ -85,4 +85,4 @@ export default {
     &:first-line
       font-size 14px
 </style>
-    
+

@@ -31,7 +31,6 @@
       }
     },
     created () {
-      console.log(userInfo)
       userInfo.get({
         id: 1
       }).then(data => {
