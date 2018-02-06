@@ -79,7 +79,8 @@
       left 10px
   .slideFade-enter-active,
   .slideFade-leave-active
-    transition all .5s cb-duang
+    // transition all .5s cb-duang
+    transition all .5s ease-in-out
     width 100%
     position absolute
     top 0
@@ -91,5 +92,4 @@
   .slideFade-leave-active
     transform translateX(-100%)
     opacity 0
-    
 </style>

@@ -3,15 +3,16 @@
   h1.u-ta--c 文章页面
   .md-content
     router-view
-  .article__list.fg__pad-row(v-if="$route.name === 'Article'")
-    router-link.article__link.u-link(
+  .article__list.fg-row.fg__pad-row(v-if="$route.name === 'Article'")
+    router-link.article__link.u-link.fg-8(
       v-for="(article, index) in articles",
       :to="{name: article.name}",
       tag="div",
-      :class="getLayout(index)",
+      :class="getMobileLayout(index)",
     )
       .article__img.u-bgi--Center(v-bgi="article.cover || '/static/img/logo.png'")
         p {{ article.title }}
+  comments(v-else)
   //- .duo-shuo
     //- duo-shuo(
     //-   domain="leenty-blog",
@@ -21,18 +22,22 @@
 
 <script>
   import list from 'src/articleList.json'
+  import Comments from './comments/Comments.vue'
   export default {
     data () {
       return {
         articles: JSON.parse(JSON.stringify(list)).reverse()
       }
     },
+    components: {
+      Comments
+    },
     methods: {
-      getLayout (index) {
-        return {
-          'fg__pad-24': index < 2,
-          'fg__pad-12': index >= 2
+      getMobileLayout (index) {
+        if (index < 2) {
+          return ['fg__pad-24']
         }
+        return ['fg__pad-12']
       }
     }
   }

@@ -20,6 +20,10 @@ const state = {
     isPc: device.isPc(),
     browserType: device.browserType(),
     isWx: device.isWechatAgent
+  },
+  user: {
+    avatar_url: 'https://avatars3.githubusercontent.com/u/13213680?v=3',
+    name: 'leenty'
   }
 }
 
@@ -56,6 +60,9 @@ const mutations = {
   },
   [types.DEVICE] (state, device) {
     state.device = device
+  },
+  [types.SETUSER] (state, data) {
+    state.user = data
   }
 }
 
@@ -80,6 +87,9 @@ const actions = {
       browserType: device.browserType(),
       isWx: device.isWechatAgent
     })
+  },
+  setUser ({ commit }, data) {
+    commit(types.SETUSER, data)
   }
 }
 

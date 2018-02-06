@@ -14,28 +14,39 @@
 </template>
 
 <script>
-  import { userInfo } from 'src/resources/resource'
+  import { userInfo, user } from 'src/resources/resource'
+  import { mapState } from 'vuex'
   export default {
     data () {
       return {
-        logo_url: 'https://avatars3.githubusercontent.com/u/13213680?v=3',
-        user: {
-          avatar_url: 'https://avatars3.githubusercontent.com/u/13213680?v=3',
-          name: 'leenty'
-        }
+        logo_url: 'https://avatars3.githubusercontent.com/u/13213680?v=3'
+        // user: {
+        //   avatar_url: 'https://avatars3.githubusercontent.com/u/13213680?v=3',
+        //   name: 'leenty'
+        // }
       }
     },
+    computed: mapState({
+      user: ({status}) => status.user
+    }),
     methods: {
       toggle () {
-        this.user.name = this.user.name ? '' : 'leenty'
+        // this.user.name = this.user.name ? '' : 'leenty'
       }
     },
     created () {
-      userInfo.get({
-        id: 1
-      }).then(data => {
-        console.log('test', data)
-      })
+      console.log(userInfo, user)
+      // userInfo.get({
+      //   id: 1
+      // }).then(data => {
+      //   console.log('test', data)
+      // })
+      // user.post({
+      //   name: 'leenty',
+      //   password: '202cb962ac59075b964b07152d234b70'
+      // }).then(data => {
+      //   console.log('login', data)
+      // })
     }
   }
 </script>

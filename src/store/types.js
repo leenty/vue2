@@ -4,6 +4,7 @@ export const SCROLLDATA = 'SCROLLDATA'
 export const SCROLLTOP = 'SCROLLTOP'
 export const APPREADY = 'APPREADY'
 export const DEVICE = 'DEVICE'
+export const SETUSER = 'SETUSER'
 
 // demo
 export const DEMO__VUEX_FOLLOW = 'DEMO__VUEX_FOLLOW'
