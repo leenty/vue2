@@ -2,8 +2,8 @@ import axios from 'axios'
 import auth from './auth'
 
 const instance = axios.create({
-  baseURL: 'http://192.168.140.75:8889/',
-  // baseURL: 'http://api.leenty.com/'
+  baseURL: 'http://192.168.18.103:8889/',
+  // baseURL: 'http://api.leenty.com/',
   timeout: 1000
 })
 

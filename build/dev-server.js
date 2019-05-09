@@ -1,6 +1,7 @@
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+var address = require('address')
 var config = require('../config')
 var opn = require('opn')
 var proxyMiddleware = require('http-proxy-middleware')
@@ -62,7 +63,8 @@ module.exports = app.listen(port, function (err) {
     console.log(err)
     return
   }
-  var uri = 'http://localhost:' + port
+  var localhost = address.ip() || 'localhost'
+  var uri = 'http://' + localhost + ':' + port
   console.log('Listening at ' + uri + '\n')
   opn(uri)
 })

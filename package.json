@@ -25,6 +25,7 @@
     "vuex": "^2.0.0"
   },
   "devDependencies": {
+    "address": "^1.0.3",
     "autoprefixer": "^6.4.0",
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.0.0",
